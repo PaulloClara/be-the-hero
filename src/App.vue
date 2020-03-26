@@ -20,6 +20,8 @@ export default {
 </script>
 
 <style lang="css">
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500i,700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -28,25 +30,21 @@ export default {
   box-sizing: border-box;
 }
 
+body {
+  background-color: #f0f0f5;
+}
+
 #app {
-  color: #2c3e50;
-  text-align: center;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font: 400 14px Roboto, sans-serif;
+  font-family: Roboto, Avenir, Helvetica, sans-serif;
 
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+input,
+button,
+textarea {
+  font: 400 14px Roboto, sans-serif;
 }
 </style>
