@@ -9,7 +9,7 @@
         <input type="text" name="id" placeholder="Sua ID" />
         <button class="button" type="submit" name="submit">Entrar</button>
 
-        <router-link :to="{ name: 'register', params: {} }">
+        <router-link class="back-link" :to="{ name: 'register', params: {} }">
           <feather type="log-in" size="16" stroke="#e02041"></feather>
           Não tenho cadastro
         </router-link>
@@ -65,26 +65,5 @@ export default {
   border-radius: 8px;
 
   color: #333333;
-}
-
-#login .content .form a {
-  display: flex;
-  align-items: center;
-
-  margin-top: 40px;
-
-  color: #41414d;
-  font-size: 18px;
-  font-weight: 500;
-
-  transition: opacity 0.2s;
-}
-
-#login .content .form a svg {
-  margin-right: 8px;
-}
-
-#login .content .form a:hover {
-  opacity: 0.8;
 }
 </style>
