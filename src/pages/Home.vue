@@ -1,12 +1,17 @@
 <template lang="html">
-  <div class="home">
-    <h1>This is an home page</h1>
+  <div id="home">
+    <m-login></m-login>
   </div>
 </template>
 
 <script lang="js">
+import LoginView from "@/views/Login"
+
 export default {
-  name: "Home"
+  name: "Home",
+  components: {
+    'm-login': LoginView
+  }
 };
 </script>
 

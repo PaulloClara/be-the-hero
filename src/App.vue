@@ -39,6 +39,8 @@ body {
 }
 
 #app {
+  height: 100vh;
+
   font: 400 14px Roboto, sans-serif;
   font-family: Roboto, Avenir, Helvetica, sans-serif;
 
