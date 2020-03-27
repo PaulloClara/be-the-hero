@@ -1,5 +1,11 @@
 <template lang="html">
+  <textarea
+    v-if="type === 'textarea'"
+    :name="name"
+    :placeholder="placeholder"
+  />
   <input
+    v-else
     :type="type"
     :name="name"
     :placeholder="placeholder"
@@ -15,7 +21,8 @@ export default {
 </script>
 
 <style lang="css" scoped>
-input {
+input,
+textarea {
   width: 100%;
   height: 60px;
 
@@ -26,5 +33,13 @@ input {
   border-radius: 8px;
 
   color: #333333;
+}
+
+textarea {
+  min-height: 140px;
+  padding: 16px 24px;
+
+  resize: vertical;
+  line-height: 24px;
 }
 </style>
