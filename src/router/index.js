@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 
 import Home from "../pages/Home";
 import About from "../pages/About";
+import Profile from "../pages/Profile";
 import Register from "../pages/Register";
 
 Vue.use(VueRouter);
@@ -15,6 +16,11 @@ export default new VueRouter({
       path: "/",
       name: "home",
       component: Home
+    },
+    {
+      path: "/profile",
+      name: "profile",
+      component: Profile
     },
     {
       path: "/about",
