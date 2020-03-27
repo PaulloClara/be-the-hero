@@ -5,6 +5,7 @@ import Home from "../pages/Home";
 import About from "../pages/About";
 import Profile from "../pages/Profile";
 import Register from "../pages/Register";
+import NewIncident from "../pages/NewIncident";
 
 Vue.use(VueRouter);
 
@@ -26,6 +27,11 @@ export default new VueRouter({
       path: "/about",
       name: "about",
       component: About
+    },
+    {
+      path: "/incidents/new",
+      name: "new-incident",
+      component: NewIncident
     },
     {
       path: "/register",
