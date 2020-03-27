@@ -1,11 +1,11 @@
 <template lang="html">
   <div id="register">
-    <div class="form">
-      <section class="header">
+    <div>
+      <section>
         <img src="@/assets/logo.svg" alt="Be The Hero" />
 
-        <h1 class="title">Cadastro</h1>
-        <p class="message">
+        <h1>Cadastro</h1>
+        <p>
           Faça seu cadastro, entre na plataforma e ajude pessoas a encontrarem
           os casos da sua ONG.
         </p>
@@ -18,7 +18,7 @@
         </m-link>
       </section>
 
-      <form class="content">
+      <form>
         <m-input type="text" name="name" placeholder="Nome da ONG"></m-input>
         <m-input type="email" name="email" placeholder="E-mail"></m-input>
         <m-input type="text" name="whatsapp" placeholder="Whatsapp"></m-input>
@@ -51,7 +51,7 @@ export default {
 };
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 #register {
   display: flex;
 
@@ -65,7 +65,7 @@ export default {
   margin: 0 auto;
 }
 
-#register .form {
+#register > div {
   display: flex;
 
   align-items: center;
@@ -80,23 +80,23 @@ export default {
   background-color: #f0f0f5;
 }
 
-#register .form .header {
+section {
   width: 100%;
   max-width: 380px;
 }
 
-#register .form .header .title {
+h1 {
   margin: 64px 0 32px;
   font-size: 32px;
 }
 
-#register .form .header .message {
+h1 + p {
   font-size: 18px;
   color: #737380;
   line-height: 32px;
 }
 
-#register .form .content {
+form {
   width: 100%;
   max-width: 450px;
 }

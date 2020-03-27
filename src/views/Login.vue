@@ -1,10 +1,10 @@
 <template lang="html">
   <div id="login">
-    <section class="content">
+    <section>
       <img src="@/assets/logo.svg" alt="Be The Hero" />
 
-      <form class="form">
-        <h1 class="title">Faça seu login</h1>
+      <form>
+        <h1>Faça seu login</h1>
 
         <m-input type="text" name="id" placeholder="Sua ID"></m-input>
         <m-button type="submit">Entrar</m-button>
@@ -37,7 +37,7 @@ export default {
 };
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 #login {
   display: flex;
 
@@ -50,18 +50,18 @@ export default {
   margin: 0 auto;
 }
 
-#login .content {
+section {
   width: 100%;
   max-width: 350px;
 
   margin-right: 30px;
 }
 
-#login .content .form {
+form {
   margin-top: 100px;
 }
 
-#login .content .form .title {
+h1 {
   font-size: 32px;
   margin-bottom: 32px;
 }
