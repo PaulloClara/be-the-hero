@@ -14,7 +14,7 @@ export default {
 };
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 input {
   width: 100%;
   height: 60px;
