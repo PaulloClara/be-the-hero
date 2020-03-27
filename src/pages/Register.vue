@@ -17,13 +17,13 @@
       </section>
 
       <form class="content">
-        <input type="text" name="name" placeholder="Nome da ONG" />
-        <input type="email" name="email" placeholder="E-mail" />
-        <input type="text" name="whatsapp" placeholder="Whatsapp" />
+        <m-input type="text" name="name" placeholder="Nome da ONG"></m-input>
+        <m-input type="email" name="email" placeholder="E-mail"></m-input>
+        <m-input type="text" name="whatsapp" placeholder="Whatsapp"></m-input>
 
         <div class="input-group">
-          <input type="text" name="city" placeholder="Cidade" />
-          <input type="text" name="uf" placeholder="UF" />
+          <m-input type="text" name="city" placeholder="Cidade"></m-input>
+          <m-input type="text" name="uf" placeholder="UF"></m-input>
         </div>
 
         <button class="button" type="submit">Cadastrar</button>
@@ -32,13 +32,18 @@
   </div>
 </template>
 
-<script lang="js">
+<script>
+import Input from "@/components/Input";
+
 export default {
-  name: "Register"
-}
+  name: "Register",
+  components: {
+    "m-input": Input
+  }
+};
 </script>
 
-<style lang="css" scoped>
+<style lang="css">
 #register {
   display: flex;
 
@@ -65,19 +70,6 @@ export default {
 
   box-shadow: 0 0 100px #00000020;
   background-color: #f0f0f5;
-}
-
-#register .form .content input {
-  width: 100%;
-  height: 60px;
-
-  margin-top: 8px;
-  padding: 0 24px;
-
-  border: 1px solid #dcdce6;
-  border-radius: 8px;
-
-  color: #333333;
 }
 
 #register .form .header {

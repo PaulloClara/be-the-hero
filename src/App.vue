@@ -62,7 +62,7 @@ main {
 input,
 button,
 textarea {
-  font: 400 14px Roboto, sans-serif;
+  font: 400 18px Roboto, sans-serif;
 }
 
 .button {

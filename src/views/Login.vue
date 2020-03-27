@@ -6,7 +6,7 @@
       <form class="form">
         <h1 class="title">Faça seu login</h1>
 
-        <input type="text" name="id" placeholder="Sua ID" />
+        <m-input type="text" name="id" placeholder="Sua ID"></m-input>
         <button class="button" type="submit" name="submit">Entrar</button>
 
         <router-link class="back-link" :to="{ name: 'register', params: {} }">
@@ -20,10 +20,15 @@
   </div>
 </template>
 
-<script lang="js">
+<script>
+import Input from "@/components/Input";
+
 export default {
-  name: "Login"
-}
+  name: "Login",
+  components: {
+    "m-input": Input
+  }
+};
 </script>
 
 <style lang="css">
@@ -53,17 +58,5 @@ export default {
 #login .content .form .title {
   font-size: 32px;
   margin-bottom: 32px;
-}
-
-#login .content .form input {
-  width: 100%;
-  height: 60px;
-
-  padding: 0 24px;
-
-  border: 1px solid #dcdce6;
-  border-radius: 8px;
-
-  color: #333333;
 }
 </style>
