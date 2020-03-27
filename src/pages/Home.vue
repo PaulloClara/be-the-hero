@@ -1,17 +1,23 @@
 <template lang="html">
   <div id="home">
-    <m-login></m-login>
+    <m-profile v-if="logged"></m-profile>
+    <m-login v-else></m-login>
   </div>
 </template>
 
 <script>
-import LoginView from "@/views/Login";
+import Login from "@/views/Login";
+import Profile from "@/views/Profile";
 
 export default {
   name: "Home",
   components: {
-    "m-login": LoginView
-  }
+    "m-login": Login,
+    "m-profile": Profile
+  },
+  data: () => ({
+    logged: true
+  })
 };
 </script>
 
