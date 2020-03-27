@@ -23,10 +23,10 @@
         <m-input type="email" name="email" placeholder="E-mail"></m-input>
         <m-input type="text" name="whatsapp" placeholder="Whatsapp"></m-input>
 
-        <div class="input-group">
+        <m-group>
           <m-input type="text" name="city" placeholder="Cidade"></m-input>
           <m-input type="text" name="uf" placeholder="UF"></m-input>
-        </div>
+        </m-group>
 
         <m-button type="submit">Cadastrar</m-button>
       </form>
@@ -36,6 +36,7 @@
 
 <script>
 import Link from "@/components/Link";
+import Group from "@/components/Group";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 
@@ -43,6 +44,7 @@ export default {
   name: "Register",
   components: {
     "m-link": Link,
+    "m-group": Group,
     "m-input": Input,
     "m-button": Button
   }
@@ -97,14 +99,5 @@ export default {
 #register .form .content {
   width: 100%;
   max-width: 450px;
-}
-
-#register .form .content .input-group {
-  display: flex;
-}
-
-#register .form .content .input-group input + input {
-  width: 80px;
-  margin-left: 8px;
 }
 </style>
