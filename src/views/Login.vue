@@ -7,7 +7,7 @@
         <h1 class="title">Faça seu login</h1>
 
         <m-input type="text" name="id" placeholder="Sua ID"></m-input>
-        <button class="button" type="submit" name="submit">Entrar</button>
+        <m-button type="submit">Entrar</m-button>
 
         <router-link class="back-link" :to="{ name: 'register', params: {} }">
           <feather type="log-in" size="16" stroke="#e02041"></feather>
@@ -22,11 +22,13 @@
 
 <script>
 import Input from "@/components/Input";
+import Button from "@/components/Button";
 
 export default {
   name: "Login",
   components: {
-    "m-input": Input
+    "m-input": Input,
+    "m-button": Button
   }
 };
 </script>

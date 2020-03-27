@@ -26,7 +26,7 @@
           <m-input type="text" name="uf" placeholder="UF"></m-input>
         </div>
 
-        <button class="button" type="submit">Cadastrar</button>
+        <m-button type="submit">Cadastrar</m-button>
       </form>
     </div>
   </div>
@@ -34,11 +34,13 @@
 
 <script>
 import Input from "@/components/Input";
+import Button from "@/components/Button";
 
 export default {
   name: "Register",
   components: {
-    "m-input": Input
+    "m-input": Input,
+    "m-button": Button
   }
 };
 </script>
@@ -96,6 +98,7 @@ export default {
 #register .form .content .input-group {
   display: flex;
 }
+
 #register .form .content .input-group input + input {
   width: 80px;
   margin-left: 8px;
