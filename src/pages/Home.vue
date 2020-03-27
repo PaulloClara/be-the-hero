@@ -4,13 +4,13 @@
   </div>
 </template>
 
-<script lang="js">
-import LoginView from "@/views/Login"
+<script>
+import LoginView from "@/views/Login";
 
 export default {
   name: "Home",
   components: {
-    'm-login': LoginView
+    "m-login": LoginView
   }
 };
 </script>
