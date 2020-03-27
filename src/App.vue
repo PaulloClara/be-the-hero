@@ -37,7 +37,7 @@ body {
   display: grid;
 
   grid-template-rows: 1fr 11fr;
-  grid-template-column: 12fr;
+  grid-template-columns: 12fr;
   grid-template-areas: "header" "main";
 
   height: 100vh;
