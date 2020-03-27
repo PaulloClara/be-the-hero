@@ -9,10 +9,12 @@
         <m-input type="text" name="id" placeholder="Sua ID"></m-input>
         <m-button type="submit">Entrar</m-button>
 
-        <router-link class="back-link" :to="{ name: 'register', params: {} }">
-          <feather type="log-in" size="16" stroke="#e02041"></feather>
+        <m-link
+          :to="{ name: 'register' }"
+          :icon="{ name: 'log-in', size: 16, color: '#e02041' }"
+        >
           Não tenho cadastro
-        </router-link>
+        </m-link>
       </form>
     </section>
 
@@ -21,12 +23,14 @@
 </template>
 
 <script>
+import Link from "@/components/Link";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 
 export default {
   name: "Login",
   components: {
+    "m-link": Link,
     "m-input": Input,
     "m-button": Button
   }

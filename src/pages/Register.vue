@@ -10,10 +10,12 @@
           os casos da sua ONG.
         </p>
 
-        <router-link class="back-link" :to="{ name: 'home', params: {} }">
-          <feather type="arrow-left" size="16" stroke="#e02041"></feather>
+        <m-link
+          :to="{ name: 'home' }"
+          :icon="{ name: 'arrow-left', size: 16, color: '#e02041' }"
+        >
           Já tenho cadastro
-        </router-link>
+        </m-link>
       </section>
 
       <form class="content">
@@ -33,12 +35,14 @@
 </template>
 
 <script>
+import Link from "@/components/Link";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 
 export default {
   name: "Register",
   components: {
+    "m-link": Link,
     "m-input": Input,
     "m-button": Button
   }

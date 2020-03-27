@@ -64,25 +64,4 @@ button,
 textarea {
   font: 400 18px Roboto, sans-serif;
 }
-
-.back-link {
-  display: flex;
-  align-items: center;
-
-  margin-top: 40px;
-
-  color: #41414d;
-  font-size: 18px;
-  font-weight: 500;
-
-  transition: opacity 0.2s;
-}
-
-.back-link svg {
-  margin-right: 8px;
-}
-
-.back-link:hover {
-  opacity: 0.8;
-}
 </style>
