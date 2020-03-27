@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 
 import Home from "../pages/Home";
 import About from "../pages/About";
+import Register from "../pages/Register";
 
 Vue.use(VueRouter);
 
@@ -19,6 +20,11 @@ export default new VueRouter({
       path: "/about",
       name: "about",
       component: About
+    },
+    {
+      path: "/register",
+      name: "register",
+      component: Register
     }
   ]
 });
