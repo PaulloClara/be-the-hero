@@ -3,20 +3,23 @@
     v-if="type === 'textarea'"
     :name="name"
     :placeholder="placeholder"
+    @change="$emit('input', $event.target.value)"
   />
   <input
     v-else
     :type="type"
     :name="name"
     :placeholder="placeholder"
-    @change="$emit('input', $event)"
+    :max="type === 'number' ? max : ''"
+    :maxlength="type !== 'number' ? max : ''"
+    @change="$emit('input', $event.target.value)"
   />
 </template>
 
 <script>
 export default {
   name: "Input",
-  props: ["type", "name", "placeholder"]
+  props: ["type", "name", "max", "placeholder"]
 };
 </script>
 
