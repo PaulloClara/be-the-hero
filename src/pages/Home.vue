@@ -15,9 +15,11 @@ export default {
     "m-login": Login,
     "m-profile": Profile
   },
-  data: () => ({
-    logged: true
-  })
+  computed: {
+    logged() {
+      return this.$store.state.ong.logged;
+    }
+  }
 };
 </script>
 

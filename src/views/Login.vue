@@ -3,10 +3,22 @@
     <section>
       <img src="@/assets/logo.svg" alt="Be The Hero" />
 
-      <form>
+      <form @submit.prevent="handleSubmit">
         <h1>Faça seu login</h1>
 
-        <m-input type="text" name="id" placeholder="Sua ID"></m-input>
+        <m-input
+          v-model="email"
+          type="email"
+          name="email"
+          placeholder="Seu Email"
+        ></m-input>
+        <m-input
+          v-model="password"
+          type="password"
+          name="password"
+          placeholder="Sua Senha"
+        ></m-input>
+
         <m-button type="submit">Entrar</m-button>
 
         <m-link
@@ -23,6 +35,8 @@
 </template>
 
 <script>
+import { mapFields } from "vuex-map-fields";
+
 import Link from "@/components/Link";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
@@ -33,6 +47,18 @@ export default {
     "m-link": Link,
     "m-input": Input,
     "m-button": Button
+  },
+  computed: {
+    ...mapFields("ong", ["login.form.email", "login.form.password"])
+  },
+  methods: {
+    handleSubmit() {
+      const { email, password } = this;
+
+      if (!email || !password) return;
+
+      this.$store.dispatch("ong/login", { email, password });
+    }
   }
 };
 </script>

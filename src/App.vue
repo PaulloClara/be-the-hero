@@ -10,7 +10,12 @@
 
 <script>
 export default {
-  name: "App"
+  name: "App",
+  mounted() {
+    if (this.$store.state.ong.profile.token) {
+      this.$store.state.ong.logged = true;
+    }
+  }
 };
 </script>
 
