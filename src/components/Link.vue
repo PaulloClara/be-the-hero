@@ -1,6 +1,6 @@
 <template lang="html">
   <router-link :to="to">
-    <feather :type="icon.name" :size="icon.size" :stroke="icon.color"></feather>
+    <feather :type="icon[0]" :size="icon[1]" :stroke="icon[2]"></feather>
     <slot name="default"></slot>
   </router-link>
 </template>

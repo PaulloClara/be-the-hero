@@ -10,10 +10,7 @@
           os casos da sua ONG.
         </p>
 
-        <m-link
-          :to="{ name: 'home' }"
-          :icon="{ name: 'arrow-left', size: 16, color: '#e02041' }"
-        >
+        <m-link :to="{ name: 'home' }" :icon="['arrow-left', 16, '#e02041']">
           Já tenho cadastro
         </m-link>
       </section>

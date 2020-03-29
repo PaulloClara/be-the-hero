@@ -21,10 +21,7 @@
 
         <m-button type="submit">Entrar</m-button>
 
-        <m-link
-          :to="{ name: 'register' }"
-          :icon="{ name: 'log-in', size: 16, color: '#e02041' }"
-        >
+        <m-link :to="{ name: 'register' }" :icon="['log-in', 16, '#e02041']">
           Não tenho cadastro
         </m-link>
       </form>
