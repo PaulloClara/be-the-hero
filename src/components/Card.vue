@@ -12,10 +12,10 @@
 
     <strong>VALOR:</strong>
     <p>
-      <slot name="description"></slot>
+      <slot name="value"></slot>
     </p>
 
-    <div class="icon">
+    <div class="icon" @click="$emit('remove')">
       <feather type="trash-2" size="20" stroke="#a8a8b3"></feather>
     </div>
   </div>

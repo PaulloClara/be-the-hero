@@ -45,8 +45,8 @@ export default {
       state.page.totalIncidents = totalIncidents;
     },
 
-    updateIncidents(state, { incidents, incident }) {
-      state.session = incidents || [incident, ...state.session];
+    updateIncidents(state, { incidents }) {
+      state.session = incidents;
     },
 
     updateField
@@ -101,7 +101,29 @@ export default {
         if (state.status.code !== 200) return;
 
         dispatch("getPage", { page: state.page.currentPage });
-        commit("updateIncidents", { incident: response.data });
+
+        const incidents = [response.data, ...state.session];
+        commit("updateIncidents", { incidents });
+      } catch ({ response }) {
+        commit("updateStatus", response);
+      }
+    },
+
+    async delete({ state, commit, dispatch }, { id, token }) {
+      try {
+        const response = await Api.delete(`/incidents/${id}`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+
+        commit("updateStatus", response);
+        if (state.status.code !== 200) return;
+
+        await dispatch("getPage", { page: state.page.currentPage });
+
+        const index = state.session.findIndex(incident => incident.id === id);
+        const incidents = state.session.splice(index, 1);
+
+        commit("updateIncidents", { incidents });
       } catch ({ response }) {
         commit("updateStatus", response);
       }

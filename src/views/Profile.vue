@@ -17,10 +17,17 @@
 
     <ul>
       <li v-for="incident in page.list" :key="incident.id">
-        <m-card>
+        <m-card @remove="removeIncident(incident)">
           <template #title>{{ incident.title }}</template>
-          <template #value>{{ incident.value }}</template>
           <template #description>{{ incident.description }}</template>
+          <template #value>
+            {{
+              Intl.NumberFormat("pt-BR", {
+                style: "currency",
+                currency: "BRL"
+              }).format(incident.value)
+            }}
+          </template>
         </m-card>
       </li>
     </ul>
@@ -49,10 +56,19 @@ export default {
   methods: {
     logout() {
       this.$store.commit("ong/updateSession", { token: "" });
+    },
+
+    removeIncident(incident) {
+      const token = this.$store.state.ong.profile.token;
+      this.$store.dispatch("incident/delete", { token, ...incident });
+    },
+
+    async getPage(page) {
+      await this.$store.dispatch("incident/getPage", { page });
     }
   },
   mounted() {
-    this.$store.dispatch("incident/getPage", { page: 1 });
+    if (this.$store.state.incident.page.list.length === 0) this.getPage(1);
   }
 };
 </script>
