@@ -2,7 +2,7 @@
   <div id="profile">
     <header>
       <img src="@/assets/logo.svg" alt="Be The Hero" />
-      <span>Bem vindo, APAD</span>
+      <span>Bem vindo, {{ ong.name }}</span>
 
       <m-button @click="$router.push({ name: 'new-incident' })">
         Cadastrar novo caso
@@ -16,17 +16,12 @@
     <h1>Casos cadastrados</h1>
 
     <ul>
-      <li>
-        <m-card></m-card>
-      </li>
-      <li>
-        <m-card></m-card>
-      </li>
-      <li>
-        <m-card></m-card>
-      </li>
-      <li>
-        <m-card></m-card>
+      <li v-for="incident in page.list" :key="incident.id">
+        <m-card>
+          <template #title>{{ incident.title }}</template>
+          <template #value>{{ incident.value }}</template>
+          <template #description>{{ incident.description }}</template>
+        </m-card>
       </li>
     </ul>
   </div>
@@ -42,10 +37,22 @@ export default {
     "m-card": Card,
     "m-button": Button
   },
+  computed: {
+    ong() {
+      return this.$store.state.ong.profile;
+    },
+
+    page() {
+      return this.$store.state.incident.page;
+    }
+  },
   methods: {
     logout() {
       this.$store.commit("ong/updateSession", { token: "" });
     }
+  },
+  mounted() {
+    this.$store.dispatch("incident/getPage", { page: 1 });
   }
 };
 </script>

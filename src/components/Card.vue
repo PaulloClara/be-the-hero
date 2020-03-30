@@ -1,13 +1,19 @@
 <template lang="html">
   <div class="card">
     <strong>CASO:</strong>
-    <p>Caso teste</p>
+    <p>
+      <slot name="title"></slot>
+    </p>
 
     <strong>DESCRIÇÂO:</strong>
-    <p>Descrição teste</p>
+    <p>
+      <slot name="description"></slot>
+    </p>
 
     <strong>VALOR:</strong>
-    <p>R$ 120,00</p>
+    <p>
+      <slot name="description"></slot>
+    </p>
 
     <div class="icon">
       <feather type="trash-2" size="20" stroke="#a8a8b3"></feather>
