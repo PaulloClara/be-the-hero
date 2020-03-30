@@ -1,11 +1,7 @@
 <template lang="html">
-  <div id="app">
-    <header></header>
-
-    <main>
-      <router-view />
-    </main>
-  </div>
+  <main id="app">
+    <router-view />
+  </main>
 </template>
 
 <script>
@@ -47,12 +43,6 @@ body {
 }
 
 #app {
-  display: grid;
-
-  grid-template-rows: 1fr 11fr;
-  grid-template-columns: 12fr;
-  grid-template-areas: "header" "main";
-
   height: 100vh;
 
   font: 400 14px Roboto, sans-serif;
@@ -60,14 +50,6 @@ body {
 
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-}
-
-header {
-  grid-area: "header";
-}
-
-main {
-  grid-area: "main";
 }
 
 /* Global CSS */
