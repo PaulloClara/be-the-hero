@@ -1,12 +1,21 @@
 <template lang="html">
   <main id="app">
-    <router-view />
+    <m-loading v-if="!showPage"></m-loading>
+    <router-view v-show="showPage" />
   </main>
 </template>
 
 <script>
+import Loading from "@/components/Loading";
+
 export default {
   name: "App",
+  components: {
+    "m-loading": Loading
+  },
+  data: () => ({
+    showPage: false
+  }),
   methods: {
     async startSession() {
       const token = localStorage.getItem("token");
@@ -17,8 +26,9 @@ export default {
       else this.$store.commit("ong/updateSession", { token: "" });
     }
   },
-  mounted() {
-    if (localStorage.getItem("token")) this.startSession();
+  async mounted() {
+    if (localStorage.getItem("token")) await this.startSession();
+    this.showPage = true;
   }
 };
 </script>
