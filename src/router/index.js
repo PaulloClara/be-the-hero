@@ -2,7 +2,6 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 import Home from "../pages/Home";
-import About from "../pages/About";
 import Register from "../pages/Register";
 import NewIncident from "../pages/NewIncident";
 
@@ -16,11 +15,6 @@ export default new VueRouter({
       path: "/",
       name: "home",
       component: Home
-    },
-    {
-      path: "/about",
-      name: "about",
-      component: About
     },
     {
       path: "/incidents/new",
