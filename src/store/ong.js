@@ -12,39 +12,49 @@ export default {
       city: "",
       uf: "",
       created_at: "",
-      token: localStorage.token
+      token: ""
     },
     login: {
-      form: {
-        email: "",
-        password: ""
-      }
+      email: "",
+      password: ""
     },
     register: {
-      form: {
-        name: "",
-        email: "",
-        whatsapp: "",
-        city: "",
-        uf: "",
-        password: ""
-      }
+      name: "",
+      email: "",
+      whatsapp: "",
+      city: "",
+      uf: "",
+      password: ""
     },
-    status: 0
+    status: {
+      code: 200,
+      error: "",
+      message: "",
+      validation: {
+        source: "",
+        keys: []
+      }
+    }
   },
   getters: {
     getField
   },
   mutations: {
+    updateStatus(state, { status, data }) {
+      if (state === 200 || !data.statusCode)
+        return (state.status.code = status);
+
+      data.code = data.statusCode;
+      data.statusCode = undefined;
+
+      state.status = data;
+    },
+
     updateSession(state, { token }) {
       state.profile.token = token;
       localStorage.setItem("token", token);
 
-      state.logged = true;
-    },
-
-    updateStatus(state, props) {
-      state.status = props.status;
+      state.logged = token !== "";
     },
 
     updateProfile(state, props) {
@@ -54,12 +64,16 @@ export default {
     updateField
   },
   actions: {
-    async getProfile({ commit }, { id }) {
+    async getProfile({ state, commit }, { token }) {
       try {
-        const response = await Api.get(`/ongs/${id}`);
+        const response = await Api.get("/sessions", {
+          headers: { Authorization: `Bearer ${token}` }
+        });
 
-        commit("updateProfile", { ...response.data });
         commit("updateStatus", response);
+        if (state.status.code !== 200) return;
+
+        commit("updateProfile", response.data);
       } catch ({ response }) {
         commit("updateStatus", response);
       }
@@ -70,24 +84,24 @@ export default {
         const response = await Api.post("/sessions", { email, password });
 
         commit("updateStatus", response);
-        if (state.status !== 200) return;
+        if (state.status.code !== 200) return;
 
-        commit("updateProfile", { ...response.data.ong });
-        commit("updateSession", { ...response.data });
+        commit("updateProfile", response.data.ong);
+        commit("updateSession", response.data);
       } catch ({ response }) {
         commit("updateStatus", response);
       }
     },
 
-    async register({ state, commit, dispatch }, payload) {
+    async register({ state, commit }, payload) {
       try {
         const response = await Api.post("/ongs", payload);
 
         commit("updateStatus", response);
-        if (state.status !== 200) return;
+        if (state.status.code !== 200) return;
 
-        dispatch("getProfile", { ...response.data });
-        commit("updateSession", { ...response.data });
+        commit("updateProfile", response.data.ong);
+        commit("updateSession", response.data);
       } catch ({ response }) {
         commit("updateStatus", response);
       }

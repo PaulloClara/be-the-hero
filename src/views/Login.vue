@@ -46,7 +46,7 @@ export default {
     "m-button": Button
   },
   computed: {
-    ...mapFields("ong", ["login.form.email", "login.form.password"])
+    ...mapFields("ong", ["login.email", "login.password"])
   },
   methods: {
     handleSubmit() {

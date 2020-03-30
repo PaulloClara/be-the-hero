@@ -87,12 +87,12 @@ export default {
   }),
   computed: {
     ...mapFields("ong", [
-      "register.form.name",
-      "register.form.email",
-      "register.form.password",
-      "register.form.whatsapp",
-      "register.form.city",
-      "register.form.uf"
+      "register.name",
+      "register.email",
+      "register.password",
+      "register.whatsapp",
+      "register.city",
+      "register.uf"
     ])
   },
   methods: {

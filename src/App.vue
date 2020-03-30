@@ -11,10 +11,18 @@
 <script>
 export default {
   name: "App",
-  mounted() {
-    if (this.$store.state.ong.profile.token) {
-      this.$store.state.ong.logged = true;
+  methods: {
+    async startSession() {
+      const token = localStorage.getItem("token");
+      await this.$store.dispatch("ong/getProfile", { token });
+
+      if (this.$store.state.ong.status.code === 200)
+        this.$store.commit("ong/updateSession", { token });
+      else this.$store.commit("ong/updateSession", { token: "" });
     }
+  },
+  mounted() {
+    if (localStorage.getItem("token")) this.startSession();
   }
 };
 </script>
