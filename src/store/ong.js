@@ -41,7 +41,7 @@ export default {
   },
   mutations: {
     updateStatus(state, { status, data }) {
-      if (state === 200 || !data.statusCode)
+      if (status === 200 || !data.statusCode)
         return (state.status.code = status);
 
       data.code = data.statusCode;

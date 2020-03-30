@@ -15,15 +15,20 @@
         </m-link>
       </section>
 
-      <form>
+      <form @submit.prevent="handleSubmit">
         <m-input
+          v-model="title"
           type="text"
           name="titulo"
           placeholder="Titulo do caso"
         ></m-input>
-        <m-input type="textarea" placeholder="Valor em reais"></m-input>
-
         <m-input
+          v-model="description"
+          type="textarea"
+          placeholder="Descrição do caso"
+        ></m-input>
+        <m-input
+          v-model="value"
           type="number"
           name="value"
           placeholder="Valor em reais"
@@ -36,6 +41,8 @@
 </template>
 
 <script>
+import { mapFields } from "vuex-map-fields";
+
 import Link from "@/components/Link";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
@@ -46,6 +53,28 @@ export default {
     "m-link": Link,
     "m-input": Input,
     "m-button": Button
+  },
+  computed: {
+    ...mapFields("incident", [
+      "register.title",
+      "register.value",
+      "register.description"
+    ])
+  },
+  methods: {
+    async handleSubmit() {
+      const { title, value, description } = this;
+
+      await this.$store.dispatch("incident/register", {
+        token: this.$store.state.ong.profile.token,
+        title,
+        value,
+        description
+      });
+
+      if (this.$store.state.incident.status.code === 200)
+        this.$router.push({ name: "home" });
+    }
   }
 };
 </script>
