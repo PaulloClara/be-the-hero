@@ -8,7 +8,7 @@
         Cadastrar novo caso
       </m-button>
 
-      <div class="icon">
+      <div class="icon" @click="logout">
         <feather type="power" size="18" stroke="#e02041"></feather>
       </div>
     </header>
@@ -41,6 +41,11 @@ export default {
   components: {
     "m-card": Card,
     "m-button": Button
+  },
+  methods: {
+    logout() {
+      this.$store.commit("ong/updateSession", { token: "" });
+    }
   }
 };
 </script>
