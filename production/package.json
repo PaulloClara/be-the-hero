@@ -1,0 +1,13 @@
+{
+  "name": "be-the-hero",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": "paulloclara <paulloclara@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ."
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
