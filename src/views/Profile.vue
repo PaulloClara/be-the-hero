@@ -133,8 +133,8 @@ h1 {
 ul {
   display: grid;
 
-  grid-gap: 24px;
-  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
 
   list-style: none;
 }
@@ -146,5 +146,17 @@ li {
   border-radius: 8px;
 
   background-color: #ffffff;
+}
+
+@media only screen and (max-width: 1366px) {
+  ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  ul {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

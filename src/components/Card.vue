@@ -1,19 +1,25 @@
 <template lang="html">
   <div class="card">
-    <strong>CASO:</strong>
-    <p>
-      <slot name="title"></slot>
-    </p>
+    <div>
+      <strong>CASO:</strong>
+      <p>
+        <slot name="title"></slot>
+      </p>
+    </div>
 
-    <strong>DESCRIÇÂO:</strong>
-    <p>
-      <slot name="description"></slot>
-    </p>
+    <div>
+      <strong>DESCRIÇÂO:</strong>
+      <p>
+        <slot name="description"></slot>
+      </p>
+    </div>
 
-    <strong>VALOR:</strong>
-    <p>
-      <slot name="value"></slot>
-    </p>
+    <div class="value">
+      <strong>VALOR:</strong>
+      <p>
+        <slot name="value"></slot>
+      </p>
+    </div>
 
     <div class="icon" @click="$emit('remove')">
       <feather type="trash-2" size="20" stroke="#a8a8b3"></feather>
@@ -28,6 +34,15 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.card {
+  display: grid;
+
+  gap: 12px;
+  grid-template-rows: 1fr 3fr 1fr;
+
+  height: 100%;
+}
+
 .icon {
   position: absolute;
 
@@ -42,10 +57,14 @@ export default {
   opacity: 0.8;
 }
 
+.value {
+  align-self: flex-end;
+}
+
 strong {
   display: block;
 
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   color: #41414d;
 }
 
@@ -54,9 +73,6 @@ p {
 
   color: #737380;
   font-size: 16px;
-}
-
-p + strong {
-  margin-top: 32px;
+  text-align: justify;
 }
 </style>

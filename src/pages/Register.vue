@@ -117,7 +117,7 @@ export default {
         uf
       });
 
-      if (this.$store.state.ong.status === 200)
+      if (this.$store.state.ong.status.code === 200)
         this.$router.push({ name: "home" });
     }
   }
