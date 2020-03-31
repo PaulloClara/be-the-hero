@@ -1,12 +1,12 @@
 module.exports = {
-  outputDir: "dist",
+  outputDir: "production/dist",
   pwa: {
-    name: "NameGator",
+    name: "BeTheHero",
     display: "standalone",
-    themeColor: "#87c440",
-    msTileColor: "#87c440",
+    themeColor: "#e02041",
+    msTileColor: "#e02041",
     manifestOptions: {
-      short_name: "NG",
+      short_name: "BTHero",
       background_color: "#000000"
     }
   }
