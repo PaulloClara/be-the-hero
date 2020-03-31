@@ -17,13 +17,13 @@
 
       <form @submit.prevent="handleSubmit">
         <m-input
-          v-model="title"
+          v-model.trim="title"
           type="text"
           name="titulo"
           placeholder="Titulo do caso"
         ></m-input>
         <m-input
-          v-model="description"
+          v-model.trim="description"
           type="textarea"
           placeholder="Descrição do caso"
         ></m-input>

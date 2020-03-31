@@ -58,6 +58,33 @@ export default {
       await this.$store.dispatch("ong/login", { email, password });
 
       this.$store.commit("updateLoading", { loading: false });
+
+      if (this.$store.state.ong.status.code !== 200) this.handleSubmitError();
+    },
+
+    handleSubmitError() {
+      const { status } = this.$store.state.ong;
+
+      const configs =
+        status.code === 401
+          ? {
+              title: "Email e/ou Senha invalido(s)!",
+              text: "Verifique com atenção se o Email e Senha estão corretos.",
+              icon: "error"
+            }
+          : status.code === 404
+          ? {
+              title: "O Email não consta no banco de dados...",
+              text: "Talvez a aplicação tenha reiniciado.",
+              icon: "warning"
+            }
+          : {
+              title: status.error,
+              text: status.message,
+              icon: "error"
+            };
+
+      this.$store.dispatch("showAlert", configs);
     }
   }
 };

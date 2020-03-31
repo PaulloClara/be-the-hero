@@ -58,9 +58,31 @@ export default {
       this.$store.commit("ong/updateSession", { token: "" });
     },
 
-    removeIncident(incident) {
+    async removeIncident(incident) {
       const token = this.$store.state.ong.profile.token;
-      this.$store.dispatch("incident/delete", { token, ...incident });
+      await this.$store.dispatch("incident/delete", { token, ...incident });
+
+      if (this.$store.state.incident.status.code !== 200)
+        this.handleRemoveIncidentError();
+    },
+
+    handleRemoveIncidentError() {
+      const { status } = this.$store.state.incident;
+
+      const configs =
+        status.code === 401
+          ? {
+              title: "Operação invalida!",
+              text: "",
+              icon: "error"
+            }
+          : {
+              title: status.error,
+              text: status.message,
+              icon: "error"
+            };
+
+      this.$store.dispatch("showAlert", configs);
     },
 
     async getPage(page) {

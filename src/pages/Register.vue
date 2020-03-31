@@ -119,10 +119,36 @@ export default {
         uf
       });
 
-      if (this.$store.state.ong.status.code === 200)
-        this.$router.push({ name: "home" });
-
       this.$store.commit("updateLoading", { loading: false });
+
+      if (this.$store.state.ong.status.code !== 200)
+        return this.handleSubmitError();
+
+      this.$router.push({ name: "home" });
+      this.$store.dispatch("showAlert", {
+        title: "Aviso importante!",
+        text: "Essa aplicação é um teste, os dados serão resetados em breve...",
+        icon: "warning"
+      });
+    },
+
+    handleSubmitError() {
+      const { status } = this.$store.state.ong;
+
+      const configs =
+        status.code === 400
+          ? {
+              title: "Email em uso!",
+              text: "Esse email já esta cadastrado no banco de dados.",
+              icon: "error"
+            }
+          : {
+              title: status.error,
+              text: status.message,
+              icon: "error"
+            };
+
+      this.$store.dispatch("showAlert", configs);
     }
   }
 };

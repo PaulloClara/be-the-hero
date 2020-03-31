@@ -1,21 +1,29 @@
 <template lang="html">
   <main id="app">
     <m-loading v-if="loading"></m-loading>
+    <m-alert v-if="alert"></m-alert>
+
     <router-view v-show="!loading" />
   </main>
 </template>
 
 <script>
+import Alert from "@/components/Alert";
 import Loading from "@/components/Loading";
 
 export default {
   name: "App",
   components: {
+    "m-alert": Alert,
     "m-loading": Loading
   },
   computed: {
     loading() {
       return this.$store.state.loading;
+    },
+
+    alert() {
+      return this.$store.state.alert.show;
     }
   },
   methods: {
