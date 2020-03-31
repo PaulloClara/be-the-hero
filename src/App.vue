@@ -1,7 +1,7 @@
 <template lang="html">
   <main id="app">
-    <m-loading v-if="!showPage"></m-loading>
-    <router-view v-show="showPage" />
+    <m-loading v-if="loading"></m-loading>
+    <router-view v-show="!loading" />
   </main>
 </template>
 
@@ -13,9 +13,11 @@ export default {
   components: {
     "m-loading": Loading
   },
-  data: () => ({
-    showPage: false
-  }),
+  computed: {
+    loading() {
+      return this.$store.state.loading;
+    }
+  },
   methods: {
     async startSession() {
       const token = localStorage.getItem("token");
@@ -28,7 +30,7 @@ export default {
   },
   async mounted() {
     if (localStorage.getItem("token")) await this.startSession();
-    this.showPage = true;
+    this.$store.commit("updateLoading", { loading: false });
   }
 };
 </script>

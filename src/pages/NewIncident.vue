@@ -65,12 +65,16 @@ export default {
     async handleSubmit() {
       const { title, value, description } = this;
 
+      this.$store.commit("updateLoading", { loading: true });
+
       await this.$store.dispatch("incident/register", {
         token: this.$store.state.ong.profile.token,
         title,
         value,
         description
       });
+
+      this.$store.commit("updateLoading", { loading: false });
 
       if (this.$store.state.incident.status.code === 200)
         this.$router.push({ name: "home" });

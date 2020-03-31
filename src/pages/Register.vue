@@ -108,6 +108,8 @@ export default {
       else if (!uf) this.error = "Campo UF é obrigatorio!";
       else if (!password) this.error = "Campo Senha é obrigatorio!";
 
+      this.$store.commit("updateLoading", { loading: true });
+
       await this.$store.dispatch("ong/register", {
         name,
         email,
@@ -119,6 +121,8 @@ export default {
 
       if (this.$store.state.ong.status.code === 200)
         this.$router.push({ name: "home" });
+
+      this.$store.commit("updateLoading", { loading: false });
     }
   }
 };

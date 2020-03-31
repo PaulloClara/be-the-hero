@@ -7,8 +7,14 @@ import incident from "@/store/incident";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    loading: true
+  },
+  mutations: {
+    updateLoading(state, { loading }) {
+      state.loading = loading;
+    }
+  },
   actions: {},
   modules: {
     ong,

@@ -49,12 +49,15 @@ export default {
     ...mapFields("ong", ["login.email", "login.password"])
   },
   methods: {
-    handleSubmit() {
+    async handleSubmit() {
       const { email, password } = this;
 
-      if (!email || !password) return;
+      this.$store.commit("updateLoading", { loading: true });
 
-      this.$store.dispatch("ong/login", { email, password });
+      if (!email || !password) return;
+      await this.$store.dispatch("ong/login", { email, password });
+
+      this.$store.commit("updateLoading", { loading: false });
     }
   }
 };
