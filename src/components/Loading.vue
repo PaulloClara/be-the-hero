@@ -19,7 +19,7 @@ export default {
 
 <style lang="css" scoped>
 #loading {
-  display: inline-block;
+  display: block;
   position: relative;
 
   top: 40%;
