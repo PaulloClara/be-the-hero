@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.e1a87bdcbee4afdb8bfe92917c9b7496.js"
+  "/precache-manifest.282ea0d21136aa60c9d084f3bc45bb66.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "be-the-hero"});
