@@ -5,7 +5,9 @@
   "author": "paulloclara <paulloclara@gmail.com>",
   "scripts": {
     "start": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "deploy": "yarn build && yarn submit",
+    "submit": "git-directory-deploy --directory production --branch heroku"
   },
   "dependencies": {
     "axios": "^0.19.2",
