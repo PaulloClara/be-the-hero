@@ -22,7 +22,7 @@ que as ajudem em seus casos.
   $ git clone https://github.com/paulloclara/be-the-hero # Clone o repositório
   $ cd be-the-hero # Navegue ate a pasta
   $ yarn -i # Instale as dependencias
-  # Configure o arquivo .env.local de acordo com o .env.example
+  # Configure o arquivo .env.local de acordo com o .env_example
   $ yarn start # Execute o servidor
 ```
 
