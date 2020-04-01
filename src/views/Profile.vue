@@ -8,7 +8,7 @@
         Cadastrar novo caso
       </m-button>
 
-      <div class="icon" @click="logout">
+      <div class="icon" @click="handleLogout">
         <feather type="power" size="18" stroke="#e02041"></feather>
       </div>
     </header>
@@ -16,8 +16,8 @@
     <h1>Casos cadastrados</h1>
 
     <ul>
-      <li v-for="incident in page.list" :key="incident.id">
-        <m-card @remove="removeIncident(incident)">
+      <li v-for="incident in page.items" :key="incident.id">
+        <m-card @remove="handleRemoveIncident(incident)">
           <template #title>{{ incident.title }}</template>
           <template #description>{{ incident.description }}</template>
           <template #value>
@@ -54,20 +54,20 @@ export default {
     }
   },
   methods: {
-    logout() {
+    handleLogout() {
       this.$store.commit("ong/updateSession", { token: "" });
     },
 
-    async removeIncident(incident) {
+    async handleRemoveIncident(incident) {
       const token = this.$store.state.ong.profile.token;
       await this.$store.dispatch("incident/delete", { token, ...incident });
 
-      if (this.$store.state.incident.status.code !== 200)
+      if (this.$store.state.status.code !== 200)
         this.handleRemoveIncidentError();
     },
 
     handleRemoveIncidentError() {
-      const { status } = this.$store.state.incident;
+      const { status } = this.$store.state;
 
       const configs =
         status.code === 401
@@ -90,7 +90,7 @@ export default {
     }
   },
   mounted() {
-    if (this.$store.state.incident.page.list.length === 0) this.getPage(1);
+    if (this.$store.state.incident.page.items.length === 0) this.getPage(1);
   }
 };
 </script>
@@ -99,8 +99,9 @@ export default {
 #profile {
   width: 100%;
   max-width: 1180px;
-  padding: 0 30px;
+
   margin: 32px auto;
+  padding: 0 30px;
 }
 
 header {

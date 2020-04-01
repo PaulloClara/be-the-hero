@@ -6,7 +6,7 @@ export default {
     status: 0,
     session: [],
     page: {
-      list: [],
+      items: [],
       currentPage: 1,
       totalIncidents: 1
     },
@@ -14,33 +14,14 @@ export default {
       title: "",
       value: "",
       description: ""
-    },
-    status: {
-      code: 200,
-      error: "",
-      message: "",
-      validation: {
-        source: "",
-        keys: []
-      }
     }
   },
   getters: {
     getField
   },
   mutations: {
-    updateStatus(state, { status, data }) {
-      if (status === 200 || !data.statusCode)
-        return (state.status.code = status);
-
-      data.code = data.statusCode;
-      data.statusCode = undefined;
-
-      state.status = data;
-    },
-
-    updatePage(state, { list, currentPage, totalIncidents }) {
-      state.page.list = list;
+    updatePage(state, { items, currentPage, totalIncidents }) {
+      state.page.items = items;
       state.page.currentPage = currentPage;
       state.page.totalIncidents = totalIncidents;
     },
@@ -52,35 +33,35 @@ export default {
     updateField
   },
   actions: {
-    async getPage({ state, commit }, { page }) {
+    async getPage({ commit }, { page }) {
       try {
         const response = await Api.get(`/incidents?page=${page}`);
 
-        commit("updateStatus", response);
-        if (state.status.code !== 200) return;
+        this.commit("updateStatus", response);
+        if (this.state.status.code !== 200) return;
 
         commit("updatePage", {
-          list: response.data,
+          items: response.data,
           currentPage: page,
           totalIncidents: response.headers["X-Total-Counter"]
         });
       } catch ({ response }) {
-        commit("updateStatus", response);
+        this.commit("updateStatus", response);
       }
     },
 
-    async getSessionIncidents({ state, commit }, { token }) {
+    async getSessionIncidents({ commit }, { token }) {
       try {
         const response = await Api.get("/sessions/incidents", {
           headers: { Authorization: `Bearer ${token}` }
         });
 
-        commit("updateStatus", response);
-        if (state.status.code !== 200) return;
+        this.commit("updateStatus", response);
+        if (this.state.status.code !== 200) return;
 
         commit("updateIncidents", { incidents: response.data });
       } catch ({ response }) {
-        commit("updateStatus", response);
+        this.commit("updateStatus", response);
       }
     },
 
@@ -97,15 +78,15 @@ export default {
           }
         );
 
-        commit("updateStatus", response);
-        if (state.status.code !== 200) return;
+        this.commit("updateStatus", response);
+        if (this.state.status.code !== 200) return;
 
         dispatch("getPage", { page: state.page.currentPage });
 
         const incidents = [response.data, ...state.session];
         commit("updateIncidents", { incidents });
       } catch ({ response }) {
-        commit("updateStatus", response);
+        this.commit("updateStatus", response);
       }
     },
 
@@ -115,8 +96,8 @@ export default {
           headers: { Authorization: `Bearer ${token}` }
         });
 
-        commit("updateStatus", response);
-        if (state.status.code !== 200) return;
+        this.commit("updateStatus", response);
+        if (this.state.status.code !== 200) return;
 
         await dispatch("getPage", { page: state.page.currentPage });
 
@@ -125,7 +106,7 @@ export default {
 
         commit("updateIncidents", { incidents });
       } catch ({ response }) {
-        commit("updateStatus", response);
+        this.commit("updateStatus", response);
       }
     }
   },

@@ -7,13 +7,13 @@
         <h1>Faça seu login</h1>
 
         <m-input
-          v-model="email"
+          v-model.trim="email"
           type="email"
           name="email"
           placeholder="Seu Email"
         ></m-input>
         <m-input
-          v-model="password"
+          v-model.trim="password"
           type="password"
           name="password"
           placeholder="Sua Senha"
@@ -59,11 +59,11 @@ export default {
 
       this.$store.commit("updateLoading", { loading: false });
 
-      if (this.$store.state.ong.status.code !== 200) this.handleSubmitError();
+      if (this.$store.state.status.code !== 200) this.handleSubmitError();
     },
 
     handleSubmitError() {
-      const { status } = this.$store.state.ong;
+      const { status } = this.$store.state;
 
       const configs =
         status.code === 401

@@ -1,7 +1,7 @@
 <template lang="html">
   <main id="app">
-    <m-loading v-if="loading"></m-loading>
     <m-alert v-if="alert"></m-alert>
+    <m-loading v-if="loading"></m-loading>
 
     <router-view v-show="!loading" />
   </main>
@@ -31,14 +31,16 @@ export default {
       const token = localStorage.getItem("token");
       await this.$store.dispatch("ong/getProfile", { token });
 
-      if (this.$store.state.ong.status.code === 200)
-        this.$store.commit("ong/updateSession", { token });
-      else this.$store.commit("ong/updateSession", { token: "" });
+      this.$store.commit("ong/updateSession", {
+        token: this.$store.state.status.code === 200 ? token : ""
+      });
+
+      this.$store.commit("updateLoading", { loading: false });
     }
   },
-  async mounted() {
-    if (localStorage.getItem("token")) await this.startSession();
-    this.$store.commit("updateLoading", { loading: false });
+  mounted() {
+    if (localStorage.getItem("token")) this.startSession();
+    else this.$store.commit("updateLoading", { loading: false });
   }
 };
 </script>

@@ -18,9 +18,28 @@ export default new Vuex.Store({
         confirmButtonColor: "#e02041"
       },
       show: false
+    },
+    status: {
+      code: 200,
+      error: "",
+      message: "",
+      validation: {
+        source: "",
+        keys: []
+      }
     }
   },
   mutations: {
+    updateStatus(state, { status, data }) {
+      if (status === 200 || !data.statusCode)
+        return (state.status.code = status);
+
+      data.code = data.statusCode;
+      data.statusCode = undefined;
+
+      state.status = data;
+    },
+
     updateLoading(state, { loading }) {
       state.loading = loading;
     },

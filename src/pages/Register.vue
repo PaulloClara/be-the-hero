@@ -16,28 +16,26 @@
       </section>
 
       <form @submit.prevent="handleSubmit">
-        <div class="error" v-if="error">{{ error }}</div>
-
         <m-input
-          v-model="name"
+          v-model.trim="name"
           type="text"
           name="name"
           placeholder="Nome da ONG"
         ></m-input>
         <m-input
-          v-model="email"
+          v-model.trim="email"
           type="email"
           name="email"
           placeholder="E-mail"
         ></m-input>
         <m-input
-          v-model="password"
+          v-model.trim="password"
           type="password"
           name="password"
           placeholder="Senha"
         ></m-input>
         <m-input
-          v-model="whatsapp"
+          v-model.trim="whatsapp"
           type="text"
           name="whatsapp"
           max="17"
@@ -46,7 +44,7 @@
 
         <m-group>
           <m-input
-            v-model="city"
+            v-model.trim="city"
             type="text"
             name="city"
             placeholder="Cidade"
@@ -82,9 +80,6 @@ export default {
     "m-input": Input,
     "m-button": Button
   },
-  data: () => ({
-    error: ""
-  }),
   computed: {
     ...mapFields("ong", [
       "register.name",
@@ -99,15 +94,6 @@ export default {
     async handleSubmit() {
       const { name, email, password, whatsapp, city, uf } = this;
 
-      this.error = "";
-
-      if (!name) this.error = "Campo Nome da ONG é obrigatorio!";
-      else if (!email) this.error = "Campo E-mail é obrigatorio!";
-      else if (!whatsapp) this.error = "Campo Whatsapp é obrigatorio!";
-      else if (!city) this.error = "Campo Cidade é obrigatorio!";
-      else if (!uf) this.error = "Campo UF é obrigatorio!";
-      else if (!password) this.error = "Campo Senha é obrigatorio!";
-
       this.$store.commit("updateLoading", { loading: true });
 
       await this.$store.dispatch("ong/register", {
@@ -121,7 +107,7 @@ export default {
 
       this.$store.commit("updateLoading", { loading: false });
 
-      if (this.$store.state.ong.status.code !== 200)
+      if (this.$store.state.status.code !== 200)
         return this.handleSubmitError();
 
       this.$router.push({ name: "home" });
@@ -133,7 +119,7 @@ export default {
     },
 
     handleSubmitError() {
-      const { status } = this.$store.state.ong;
+      const { status } = this.$store.state;
 
       const configs =
         status.code === 400

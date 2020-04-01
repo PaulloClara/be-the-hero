@@ -76,7 +76,7 @@ export default {
 
       this.$store.commit("updateLoading", { loading: false });
 
-      if (this.$store.state.incident.status.code === 200)
+      if (this.$store.state.status.code === 200)
         this.$router.push({ name: "home" });
     }
   }
