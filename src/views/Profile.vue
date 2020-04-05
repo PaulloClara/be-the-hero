@@ -90,7 +90,7 @@ export default {
     }
   },
   mounted() {
-    if (this.$store.state.incident.page.items.length === 0) this.getPage(1);
+    if (this.$store.state.incident.page.items.length === 1) this.getPage(1);
   }
 };
 </script>
