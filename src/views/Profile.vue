@@ -97,8 +97,8 @@ export default {
 
 <style lang="css" scoped>
 #profile {
-  width: 100%;
-  max-width: 1180px;
+  width: 90%;
+  max-width: 1600px;
 
   margin: 32px auto;
   padding: 0 30px;
@@ -157,7 +157,7 @@ ul {
   display: grid;
 
   gap: 24px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 
   list-style: none;
 }
@@ -169,6 +169,12 @@ li {
   border-radius: 8px;
 
   background-color: #ffffff;
+}
+
+@media only screen and (max-width: 1919px) {
+  ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media only screen and (max-width: 1366px) {
