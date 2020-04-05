@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 import Home from "../pages/Home";
 import Register from "../pages/Register";
 import NewIncident from "../pages/NewIncident";
+import PageNotFound from "../pages/PageNotFound";
 
 Vue.use(VueRouter);
 
@@ -25,6 +26,11 @@ export default new VueRouter({
       path: "/register",
       name: "register",
       component: Register
+    },
+    {
+      path: "*",
+      name: "page-not-found",
+      component: PageNotFound
     }
   ]
 });
