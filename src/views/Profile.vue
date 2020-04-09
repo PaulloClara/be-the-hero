@@ -15,34 +15,52 @@
 
     <h1>Casos cadastrados</h1>
 
-    <ul>
-      <li v-for="incident in page.items" :key="incident.id">
-        <m-card @remove="handleRemoveIncident(incident)">
-          <template #title>{{ incident.title }}</template>
-          <template #description>{{ incident.description }}</template>
-          <template #value>
-            {{
-              Intl.NumberFormat("pt-BR", {
-                style: "currency",
-                currency: "BRL"
-              }).format(incident.value)
-            }}
-          </template>
-        </m-card>
-      </li>
-    </ul>
+    <div class="incident-list">
+      <m-pagination
+        :totalPages="page.pages"
+        :currentPage="page.current"
+        :pagination="page.pagination"
+        @goTo="handleGoTo"
+      ></m-pagination>
+
+      <ul>
+        <li v-for="incident in page.incidents" :key="incident.id">
+          <m-card @remove="handleRemoveIncident(incident)">
+            <template #title>{{ incident.title }}</template>
+            <template #description>{{ incident.description }}</template>
+            <template #value>
+              {{
+                Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL"
+                }).format(incident.value)
+              }}
+            </template>
+          </m-card>
+        </li>
+      </ul>
+
+      <m-pagination
+        :totalPages="page.pages"
+        :currentPage="page.current"
+        :pagination="page.pagination"
+        @goTo="handleGoTo"
+      ></m-pagination>
+    </div>
   </div>
 </template>
 
 <script>
 import Card from "@/components/Card";
 import Button from "@/components/Button";
+import Pagination from "@/components/Pagination";
 
 export default {
   name: "Profile",
   components: {
     "m-card": Card,
-    "m-button": Button
+    "m-button": Button,
+    "m-pagination": Pagination
   },
   computed: {
     ong() {
@@ -54,6 +72,10 @@ export default {
     }
   },
   methods: {
+    async handleGoTo(page) {
+      await this.$store.dispatch("incident/getPage", { page });
+    },
+
     handleLogout() {
       this.$store.commit("ong/updateSession", { token: "" });
     },
@@ -90,7 +112,7 @@ export default {
     }
   },
   mounted() {
-    if (this.$store.state.incident.page.items.length === 1) this.getPage(1);
+    if (this.$store.state.incident.page.incidents.length === 1) this.getPage(1);
   }
 };
 </script>
@@ -102,6 +124,18 @@ export default {
 
   margin: 32px auto;
   padding: 0 30px;
+}
+
+.pagination {
+  margin: 20px 0;
+}
+
+.incident-list {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
 }
 
 header {

@@ -1,12 +1,14 @@
-import Api from "@/services/api";
 import { getField, updateField } from "vuex-map-fields";
+
+import Api from "@/services/api";
+import paginationLogic from "@/utils/pagination-logic";
 
 export default {
   state: {
     status: 0,
     session: [],
     page: {
-      items: [
+      incidents: [
         {
           id: 1,
           title: "Iniciando...",
@@ -23,8 +25,11 @@ export default {
           created_at: "2020-04-05 02:16:17"
         }
       ],
-      currentPage: 1,
-      totalIncidents: 1
+      total: 0,
+      pages: 0,
+      limit: 12,
+      current: 1,
+      pagination: []
     },
     register: {
       title: "",
@@ -36,10 +41,19 @@ export default {
     getField
   },
   mutations: {
-    updatePage(state, { items, currentPage, totalIncidents }) {
-      state.page.items = items;
-      state.page.currentPage = currentPage;
-      state.page.totalIncidents = totalIncidents;
+    updatePage(state, { incidents, current, limit, total }) {
+      state.page.limit = limit;
+      state.page.total = total;
+      state.page.pages = (total / limit).toFixed();
+      state.page.current = current;
+      state.page.incidents = incidents;
+
+      state.page.pagination = paginationLogic({
+        totalPages: state.page.pages,
+        currentPage: current,
+        totalButtonsLeft: 3,
+        totalButtonsRight: 3
+      });
     },
 
     updateIncidents(state, { incidents }) {
@@ -49,18 +63,16 @@ export default {
     updateField
   },
   actions: {
-    async getPage({ commit }, { page }) {
+    async getPage({ commit }, { page, limit = 12 }) {
       try {
-        const response = await Api.get(`/incidents?page=${page}`);
+        const response = await Api.get(
+          `/incidents?page=${page}&limit=${limit}`
+        );
 
         this.commit("updateStatus", response);
         if (this.state.status.code !== 200) return;
 
-        commit("updatePage", {
-          items: response.data,
-          currentPage: page,
-          totalIncidents: response.headers["X-Total-Counter"]
-        });
+        commit("updatePage", response.data);
       } catch ({ response }) {
         this.commit("updateStatus", response);
       }
@@ -97,7 +109,7 @@ export default {
         this.commit("updateStatus", response);
         if (this.state.status.code !== 200) return;
 
-        dispatch("getPage", { page: state.page.currentPage });
+        dispatch("getPage", { page: state.page.current });
 
         const incidents = [response.data, ...state.session];
         commit("updateIncidents", { incidents });
@@ -115,7 +127,7 @@ export default {
         this.commit("updateStatus", response);
         if (this.state.status.code !== 200) return;
 
-        await dispatch("getPage", { page: state.page.currentPage });
+        await dispatch("getPage", { page: state.page.current });
 
         const index = state.session.findIndex(incident => incident.id === id);
         const incidents = state.session.splice(index, 1);
