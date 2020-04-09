@@ -66,6 +66,7 @@
 
 <script>
 import { mapFields } from "vuex-map-fields";
+import { registerError, registerSuccess } from "@/utils/alerts";
 
 import Link from "@/components/Link";
 import Group from "@/components/Group";
@@ -107,34 +108,12 @@ export default {
 
       this.$store.commit("updateLoading", { loading: false });
 
-      if (this.$store.state.status.code !== 200)
-        return this.handleSubmitError();
+      const { status } = this.$store.state;
+      if (status.code !== 200)
+        return this.$store.dispatch("showAlert", registerError(status));
 
       this.$router.push({ name: "home" });
-      this.$store.dispatch("showAlert", {
-        title: "Aviso importante!",
-        text: "Essa aplicação é um teste, os dados serão resetados em breve...",
-        icon: "warning"
-      });
-    },
-
-    handleSubmitError() {
-      const { status } = this.$store.state;
-
-      const configs =
-        status.code === 400
-          ? {
-              title: "Email em uso!",
-              text: "Esse email já esta cadastrado no banco de dados.",
-              icon: "error"
-            }
-          : {
-              title: status.error,
-              text: status.message,
-              icon: "error"
-            };
-
-      this.$store.dispatch("showAlert", configs);
+      this.$store.dispatch("showAlert", registerSuccess);
     }
   }
 };

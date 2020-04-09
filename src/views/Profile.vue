@@ -51,6 +51,8 @@
 </template>
 
 <script>
+import { removeIncidentError } from "@/utils/alerts";
+
 import Card from "@/components/Card";
 import Button from "@/components/Button";
 import Pagination from "@/components/Pagination";
@@ -72,47 +74,26 @@ export default {
     }
   },
   methods: {
-    async handleGoTo(page) {
-      await this.$store.dispatch("incident/getPage", { page });
-    },
-
     handleLogout() {
       this.$store.commit("ong/updateSession", { token: "" });
     },
 
+    async handleGoTo(page) {
+      await this.$store.dispatch("incident/getPage", { page });
+    },
+
     async handleRemove(incident) {
-      const token = this.$store.state.ong.profile.token;
+      const { token } = this.$store.state.ong.profile;
       await this.$store.dispatch("incident/delete", { token, ...incident });
 
-      if (this.$store.state.status.code !== 200)
-        this.handleRemoveIncidentError();
-    },
-
-    handleRemoveIncidentError() {
       const { status } = this.$store.state;
-
-      const configs =
-        status.code === 401
-          ? {
-              title: "Operação invalida!",
-              text: "",
-              icon: "error"
-            }
-          : {
-              title: status.error,
-              text: status.message,
-              icon: "error"
-            };
-
-      this.$store.dispatch("showAlert", configs);
-    },
-
-    async getPage(page) {
-      await this.$store.dispatch("incident/getPage", { page });
+      if (this.$store.state.status.code !== 200)
+        this.$store.dispatch("showAlert", removeIncidentError(status));
     }
   },
   mounted() {
-    if (this.$store.state.incident.page.incidents.length === 1) this.getPage(1);
+    if (this.$store.state.incident.page.incidents.length === 1)
+      this.handleGoTo(1);
   }
 };
 </script>
