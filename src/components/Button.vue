@@ -1,9 +1,9 @@
 <template lang="html">
-  <a v-if="type === 'link'" @click="$emit('click', $event)">
+  <a v-if="type === 'link'" @click="emitClick($event)">
     <slot name="default"></slot>
   </a>
 
-  <button v-else :type="type" @click="$emit('click', $event)">
+  <button v-else :type="type" @click="emitClick($event)">
     <slot name="default"></slot>
   </button>
 </template>
@@ -11,7 +11,12 @@
 <script>
 export default {
   name: "Button",
-  props: ["type"]
+  props: ["type"],
+  methods: {
+    emitClick(evt) {
+      this.$emit("click", evt);
+    }
+  }
 };
 </script>
 

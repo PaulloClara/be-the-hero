@@ -25,7 +25,7 @@
 
       <ul>
         <li v-for="incident in page.incidents" :key="incident.id">
-          <m-card @remove="handleRemoveIncident(incident)">
+          <m-card @remove="handleRemove(incident)">
             <template #title>{{ incident.title }}</template>
             <template #description>{{ incident.description }}</template>
             <template #value>
@@ -80,7 +80,7 @@ export default {
       this.$store.commit("ong/updateSession", { token: "" });
     },
 
-    async handleRemoveIncident(incident) {
+    async handleRemove(incident) {
       const token = this.$store.state.ong.profile.token;
       await this.$store.dispatch("incident/delete", { token, ...incident });
 

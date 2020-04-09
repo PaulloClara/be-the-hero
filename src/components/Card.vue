@@ -21,7 +21,7 @@
       </p>
     </div>
 
-    <div class="icon" @click="$emit('remove')">
+    <div class="icon" @click="emitRemove($event)">
       <feather type="trash-2" size="20" stroke="#a8a8b3"></feather>
     </div>
   </div>
@@ -29,7 +29,12 @@
 
 <script>
 export default {
-  name: "Card"
+  name: "Card",
+  methods: {
+    emitRemove(evt) {
+      this.$emit("remove", evt);
+    }
+  }
 };
 </script>
 
