@@ -1,5 +1,9 @@
 <template lang="html">
-  <button :type="type" @click="$emit('click', $event)">
+  <a v-if="type === 'link'" @click="$emit('click', $event)">
+    <slot name="default"></slot>
+  </a>
+
+  <button v-else :type="type" @click="$emit('click', $event)">
     <slot name="default"></slot>
   </button>
 </template>
@@ -12,6 +16,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
+a,
 button {
   display: inline-block;
 
@@ -21,9 +26,10 @@ button {
   margin-top: 16px;
 
   border: 0;
+  outline: none;
   border-radius: 8px;
 
-  color: #ffffff;
+  color: #fff;
   font-size: 18px;
   font-weight: 700;
   text-align: center;
@@ -35,6 +41,7 @@ button {
   background-color: #e02041;
 }
 
+a:hover,
 button:hover {
   filter: brightness(90%);
 }
