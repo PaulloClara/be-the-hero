@@ -15,30 +15,36 @@
         </m-link>
       </section>
 
-      <form @submit.prevent="handleSubmit">
+      <form ref="registerOng" @submit.prevent="handleSubmit">
         <m-input
           v-model.trim="name"
           type="text"
           name="name"
+          required="true"
           placeholder="Nome da ONG"
         ></m-input>
         <m-input
           v-model.trim="email"
-          type="email"
           name="email"
+          type="email"
+          required="true"
           placeholder="E-mail"
         ></m-input>
         <m-input
           v-model.trim="password"
           type="password"
           name="password"
+          min="8"
+          required="true"
           placeholder="Senha"
         ></m-input>
         <m-input
           v-model.trim="whatsapp"
           type="text"
           name="whatsapp"
+          min="10"
           max="17"
+          required="true"
           placeholder="Whatsapp"
         ></m-input>
 
@@ -47,6 +53,7 @@
             v-model.trim="city"
             type="text"
             name="city"
+            required="true"
             placeholder="Cidade"
           ></m-input>
           <m-input
@@ -54,6 +61,7 @@
             type="text"
             name="uf"
             max="2"
+            required="true"
             placeholder="UF"
           ></m-input>
         </m-group>
@@ -112,8 +120,23 @@ export default {
       if (status.code !== 200)
         return this.$store.dispatch("showAlert", registerError(status));
 
+      this.resetForm();
+
       this.$router.push({ name: "home" });
       this.$store.dispatch("showAlert", registerSuccess);
+    },
+
+    resetForm() {
+      this.$refs.registerOng.reset();
+
+      this.$store.commit("ong/updateRegisterForm", {
+        name: "",
+        email: "",
+        password: "",
+        whatsapp: "",
+        city: "",
+        uf: ""
+      });
     }
   }
 };

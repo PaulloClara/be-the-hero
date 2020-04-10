@@ -42,6 +42,15 @@ export default {
       state.profile = props;
     },
 
+    updateRegisterForm(state, { name, email, password, whatsapp, city, uf }) {
+      state.register.name = name;
+      state.register.email = email;
+      state.register.password = password;
+      state.register.whatsapp = whatsapp;
+      state.register.city = city;
+      state.register.uf = uf;
+    },
+
     updateField
   },
   actions: {

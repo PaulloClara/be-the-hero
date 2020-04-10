@@ -3,19 +3,22 @@
     <section>
       <img src="@/assets/logo.svg" alt="Be The Hero" />
 
-      <form @submit.prevent="handleSubmit">
+      <form ref="formLogin" @submit.prevent="handleSubmit">
         <h1>Faça seu login</h1>
 
         <m-input
           v-model.trim="email"
           type="email"
           name="email"
+          required="true"
           placeholder="Seu Email"
         ></m-input>
         <m-input
           v-model.trim="password"
           type="password"
           name="password"
+          min="8"
+          required="true"
           placeholder="Sua Senha"
         ></m-input>
 
@@ -55,7 +58,6 @@ export default {
 
       this.$store.commit("updateLoading", { loading: true });
 
-      if (!email || !password) return;
       await this.$store.dispatch("ong/login", { email, password });
 
       this.$store.commit("updateLoading", { loading: false });

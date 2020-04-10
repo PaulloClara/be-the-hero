@@ -62,6 +62,12 @@ export default {
       state.session = incidents;
     },
 
+    updateForm(state, { title, value, description }) {
+      state.register.title = title;
+      state.register.value = value;
+      state.register.description = description;
+    },
+
     updateField
   },
   actions: {

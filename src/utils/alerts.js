@@ -4,8 +4,8 @@ export const registerSuccess = {
   icon: "warning"
 };
 
-export function registerError({ code, error, message }) {
-  return code === 400
+export function registerError({ code, error, message, validation }) {
+  return code === 400 && validation.source === "running"
     ? {
         title: "Email em uso!",
         text: "Esse email já esta cadastrado no banco de dados.",
@@ -50,4 +50,12 @@ export function removeIncidentError({ code, error, message }) {
         text: message,
         icon: "error"
       };
+}
+
+export function registerIncidentError({ code, error, message }) {
+  return {
+    title: error,
+    text: message,
+    icon: "error"
+  };
 }

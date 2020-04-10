@@ -15,22 +15,26 @@
         </m-link>
       </section>
 
-      <form @submit.prevent="handleSubmit">
+      <form ref="newIncident" @submit.prevent="handleSubmit">
         <m-input
           v-model.trim="title"
           type="text"
-          name="titulo"
+          name="title"
+          required="true"
           placeholder="Titulo do caso"
         ></m-input>
         <m-input
           v-model.trim="description"
           type="textarea"
+          name="description"
+          required="true"
           placeholder="Descrição do caso"
         ></m-input>
         <m-input
           v-model="value"
           type="number"
           name="value"
+          required="true"
           placeholder="Valor em reais"
         ></m-input>
 
@@ -42,6 +46,7 @@
 
 <script>
 import { mapFields } from "vuex-map-fields";
+import { registerIncidentError } from "@/utils/alerts";
 
 import Link from "@/components/Link";
 import Input from "@/components/Input";
@@ -76,8 +81,22 @@ export default {
 
       this.$store.commit("updateLoading", { loading: false });
 
-      if (this.$store.state.status.code === 200)
-        this.$router.push({ name: "home" });
+      const { status } = this.$store.state;
+      if (status.code !== 200)
+        return this.$store.dispatch("showAlert", registerIncidentError(status));
+
+      this.resetForm();
+      this.$router.push({ name: "home" });
+    },
+
+    resetForm() {
+      this.$refs.newIncident.reset();
+
+      this.$store.commit("incident/updateForm", {
+        title: "",
+        value: "",
+        description: ""
+      });
     }
   }
 };
