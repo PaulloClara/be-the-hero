@@ -51,8 +51,8 @@ export default {
       state.page.pagination = paginationLogic({
         totalPages: state.page.pages,
         currentPage: current,
-        totalButtonsLeft: 3,
-        totalButtonsRight: 3
+        totalButtonsLeft: this.state.pagination.buttonsLeft,
+        totalButtonsRight: this.state.pagination.buttonsRight
       });
     },
 

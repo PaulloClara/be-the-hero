@@ -9,6 +9,10 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     loading: true,
+    pagination: {
+      buttonsLeft: 4,
+      buttonsRight: 4
+    },
     alert: {
       configs: {
         title: "",
@@ -52,6 +56,11 @@ export default new Vuex.Store({
 
     updateAlertStatus(state, { show }) {
       state.alert.show = show;
+    },
+
+    updatePaginationLength(state, { left, right }) {
+      state.pagination.buttonsLeft = left;
+      state.pagination.buttonsRight = right;
     }
   },
   actions: {
