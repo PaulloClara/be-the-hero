@@ -47,10 +47,12 @@ export default {
       state.page.pages = (total / limit).toFixed();
       state.page.current = current;
       state.page.incidents = incidents;
+    },
 
+    updatePagination(state) {
       state.page.pagination = paginationLogic({
         totalPages: state.page.pages,
-        currentPage: current,
+        currentPage: state.page.current,
         totalButtonsLeft: this.state.pagination.buttonsLeft,
         totalButtonsRight: this.state.pagination.buttonsRight
       });
@@ -73,6 +75,7 @@ export default {
         if (this.state.status.code !== 200) return;
 
         commit("updatePage", response.data);
+        commit("updatePagination");
       } catch ({ response }) {
         this.commit("updateStatus", response);
       }

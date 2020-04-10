@@ -19,7 +19,7 @@
       <m-pagination
         :totalPages="page.pages"
         :currentPage="page.current"
-        :pagination="page.pagination"
+        :pagination="pagination"
         @goTo="handleGoTo"
       ></m-pagination>
 
@@ -43,7 +43,7 @@
       <m-pagination
         :totalPages="page.pages"
         :currentPage="page.current"
-        :pagination="page.pagination"
+        :pagination="pagination"
         @goTo="handleGoTo"
       ></m-pagination>
     </div>
@@ -71,6 +71,10 @@ export default {
 
     page() {
       return this.$store.state.incident.page;
+    },
+
+    pagination() {
+      return this.$store.state.incident.page.pagination;
     }
   },
   methods: {

@@ -37,6 +37,27 @@ export default new Vuex.Store({
       }
     }
   },
+  getters: {
+    xsWindow(state) {
+      return state.window.width < 480;
+    },
+
+    smWindow(state) {
+      return state.window.width < 800;
+    },
+
+    mdWindow(state) {
+      return state.window.width < 1366;
+    },
+
+    lgWindow(state) {
+      return state.window.width < 1920;
+    },
+
+    xlWindow(state) {
+      return state.window.width > 1920;
+    }
+  },
   mutations: {
     updateStatus(state, { status, data }) {
       if (status === 200 || !data.statusCode)
@@ -62,14 +83,27 @@ export default new Vuex.Store({
       state.alert.show = show;
     },
 
-    updatePaginationLength(state, { left, right }) {
-      state.pagination.buttonsLeft = left;
-      state.pagination.buttonsRight = right;
+    updatePaginationLength(state) {
+      const { xsWindow, smWindow, mdWindow, lgWindow } = this.getters;
+      state.pagination.buttonsLeft = xsWindow
+        ? 1
+        : smWindow
+        ? 2
+        : mdWindow
+        ? 3
+        : lgWindow
+        ? 4
+        : 5;
+      state.pagination.buttonsRight = state.pagination.buttonsLeft;
+
+      this.commit("incident/updatePagination");
     },
 
     updateWindowSize(state) {
       state.window.width = window.innerWidth;
       state.window.height = window.innerHeight;
+
+      this.commit("updatePaginationLength");
     }
   },
   actions: {
