@@ -2,6 +2,8 @@
   <textarea
     v-if="type === 'textarea'"
     :name="name"
+    :required="required"
+    :maxlength="type !== 'number' ? max : ''"
     :placeholder="placeholder"
     @change="emitInput($event)"
   />
@@ -10,8 +12,11 @@
     v-else
     :type="type"
     :name="name"
+    :required="required"
     :placeholder="placeholder"
+    :min="type === 'number' ? min : ''"
     :max="type === 'number' ? max : ''"
+    :minlength="type !== 'number' ? min : ''"
     :maxlength="type !== 'number' ? max : ''"
     @change="emitInput($event)"
   />
@@ -20,7 +25,7 @@
 <script>
 export default {
   name: "Input",
-  props: ["type", "name", "max", "placeholder"],
+  props: ["type", "name", "min", "max", "required", "placeholder"],
   methods: {
     emitInput(evt) {
       this.$emit("input", evt.target.value);
