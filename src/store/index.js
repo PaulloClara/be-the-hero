@@ -9,6 +9,10 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     loading: true,
+    window: {
+      width: 0,
+      height: 0
+    },
     pagination: {
       buttonsLeft: 4,
       buttonsRight: 4
@@ -61,6 +65,11 @@ export default new Vuex.Store({
     updatePaginationLength(state, { left, right }) {
       state.pagination.buttonsLeft = left;
       state.pagination.buttonsRight = right;
+    },
+
+    updateWindowSize(state) {
+      state.window.width = window.innerWidth;
+      state.window.height = window.innerHeight;
     }
   },
   actions: {

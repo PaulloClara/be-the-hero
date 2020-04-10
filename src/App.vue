@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 import Alert from "@/components/Alert";
 import Loading from "@/components/Loading";
 
@@ -36,11 +38,20 @@ export default {
       });
 
       this.$store.commit("updateLoading", { loading: false });
-    }
+    },
+
+    ...mapMutations(["updateWindowSize"])
   },
   mounted() {
+    window.addEventListener("resize", this.updateWindowSize);
+    this.updateWindowSize();
+
     if (localStorage.getItem("token")) this.startSession();
     else this.$store.commit("updateLoading", { loading: false });
+  },
+
+  destroyed() {
+    window.removeEventListener("resize", this.updateWindowSize);
   }
 };
 </script>
