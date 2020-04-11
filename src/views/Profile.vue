@@ -4,12 +4,14 @@
       <img src="@/assets/logo.svg" alt="Be The Hero" />
       <span>Bem vindo, {{ ong.name }}</span>
 
-      <m-button @click="$router.push({ name: 'new-incident' })">
-        Cadastrar novo caso
-      </m-button>
+      <div>
+        <m-button @click="$router.push({ name: 'new-incident' })">
+          Cadastrar novo caso
+        </m-button>
 
-      <div class="icon" @click="handleLogout">
-        <feather type="power" size="18" stroke="#e02041"></feather>
+        <div class="icon" @click="handleLogout">
+          <feather type="power" size="18" stroke="#e02041"></feather>
+        </div>
       </div>
     </header>
 
@@ -128,20 +130,23 @@ header {
   align-items: center;
 }
 
+header > div {
+  display: inline-flex;
+  margin-left: auto;
+}
+
 header img {
   height: 64px;
 }
 
-header span {
-  margin-left: 24px;
+header > span {
+  margin: 0 12px;
   font-size: 20px;
 }
 
-button {
+header > div > button {
   width: 260px;
-
   margin-top: 0;
-  margin-left: auto;
 }
 
 .icon {
@@ -190,19 +195,57 @@ li {
   background-color: #ffffff;
 }
 
-@media only screen and (max-width: 1919px) {
+@media only screen and (max-width: 1920px) {
   ul {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media only screen and (max-width: 1366px) {
+@media only screen and (max-width: 1365px) {
   ul {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 800px) {
+  #profile {
+    width: 100%;
+
+    margin: 0;
+    padding: 12px;
+  }
+
+  header {
+    flex-direction: column;
+  }
+
+  header > img {
+    margin-bottom: 12px;
+  }
+
+  header > span {
+    margin: 0;
+  }
+
+  header > div {
+    margin: 20px 0;
+  }
+
+  header > div > button {
+    width: 200px;
+  }
+
+  .icon {
+    margin-left: 8px;
+  }
+
+  h1 {
+    margin: 0;
+
+    font-size: 32px;
+    text-align: center;
+  }
+
   ul {
     grid-template-columns: 1fr;
   }

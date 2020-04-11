@@ -177,14 +177,17 @@ section {
 }
 
 h1 {
-  margin: 64px 0 32px;
+  margin: 32px 0;
   font-size: 32px;
 }
 
 h1 + p {
-  font-size: 18px;
+  margin-right: 12px;
+  text-align: justify;
+
   color: #737380;
-  line-height: 32px;
+  font-size: 18px;
+  line-height: 26px;
 }
 
 form {
@@ -192,7 +195,31 @@ form {
   max-width: 450px;
 }
 
-.error {
-  color: #ff0f0f;
+@media only screen and (max-width: 800px) {
+  #register {
+    align-items: flex-start;
+  }
+
+  #register > div {
+    flex-direction: column;
+    padding: 12px;
+  }
+
+  section {
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: 8px;
+    text-align: left;
+  }
+
+  h1 + p {
+    margin-right: 0;
+  }
+
+  section > a {
+    margin: 12px 0;
+  }
 }
 </style>

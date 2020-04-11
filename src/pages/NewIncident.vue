@@ -137,18 +137,46 @@ section {
 }
 
 h1 {
-  margin: 64px 0 32px;
+  margin: 32px 0;
   font-size: 32px;
 }
 
 h1 + p {
-  font-size: 18px;
+  margin-right: 24px;
+
   color: #737380;
-  line-height: 32px;
+  font-size: 18px;
+  line-height: 26px;
 }
 
 form {
   width: 100%;
   max-width: 450px;
+}
+
+@media only screen and (max-width: 800px) {
+  #new-incident {
+    height: auto;
+
+    margin: 0;
+    text-align: center;
+  }
+
+  #new-incident > div {
+    flex-direction: column;
+    padding: 12px;
+  }
+
+  h1 {
+    margin-bottom: 12px;
+  }
+
+  h1 + p {
+    margin: 0px;
+  }
+
+  section a {
+    margin: 12px 0;
+  }
 }
 </style>
