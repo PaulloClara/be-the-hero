@@ -1,13 +1,3 @@
-<template lang="html">
-  <a v-if="type === 'link'" @click="emitClick($event)">
-    <slot name="default"></slot>
-  </a>
-
-  <button v-else :type="type" @click="emitClick($event)">
-    <slot name="default"></slot>
-  </button>
-</template>
-
 <script>
 export default {
   name: "Button",
@@ -19,6 +9,16 @@ export default {
   }
 };
 </script>
+
+<template lang="html">
+  <a v-if="type === 'link'" class="button" @click="emitClick($event)">
+    <slot name="default"></slot>
+  </a>
+
+  <button v-else :type="type" class="button" @click="emitClick($event)">
+    <slot name="default"></slot>
+  </button>
+</template>
 
 <style lang="css" scoped>
 a,

@@ -1,12 +1,3 @@
-<template lang="html">
-  <main id="app">
-    <m-alert v-if="alert"></m-alert>
-    <m-loading v-if="loading"></m-loading>
-
-    <router-view v-show="!loading" />
-  </main>
-</template>
-
 <script>
 import { mapMutations } from "vuex";
 
@@ -37,17 +28,21 @@ export default {
         token: this.$store.state.status.code === 200 ? token : ""
       });
 
-      this.$store.commit("updateLoading", { loading: false });
+      this.$store.commit("updateLoading", { active: false });
+    },
+
+    addResizeEvent() {
+      window.addEventListener("resize", this.updateWindowSize);
+      this.updateWindowSize();
     },
 
     ...mapMutations(["updateWindowSize"])
   },
   mounted() {
-    window.addEventListener("resize", this.updateWindowSize);
-    this.updateWindowSize();
+    this.addResizeEvent();
 
-    if (localStorage.getItem("token")) this.startSession();
-    else this.$store.commit("updateLoading", { loading: false });
+    if (localStorage.getItem("token")) return this.startSession();
+    this.$store.commit("updateLoading", { active: false });
   },
 
   destroyed() {
@@ -56,10 +51,17 @@ export default {
 };
 </script>
 
+<template lang="html">
+  <main id="app">
+    <m-alert v-if="alert"></m-alert>
+    <m-loading v-if="loading"></m-loading>
+
+    <router-view v-show="!loading" />
+  </main>
+</template>
+
 <style lang="css">
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500i,700&display=swap");
-
-/* Reset CSS */
 
 * {
   margin: 0;
@@ -68,8 +70,6 @@ export default {
   text-decoration: none;
   box-sizing: border-box;
 }
-
-/* Page CSS */
 
 body {
   background-color: #f0f0f5;
@@ -84,8 +84,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
-
-/* Global CSS */
 
 input,
 button,

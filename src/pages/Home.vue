@@ -1,10 +1,3 @@
-<template lang="html">
-  <div id="home">
-    <m-profile v-if="logged"></m-profile>
-    <m-login v-else></m-login>
-  </div>
-</template>
-
 <script>
 import Login from "@/views/Login";
 import Profile from "@/views/Profile";
@@ -22,5 +15,12 @@ export default {
   }
 };
 </script>
+
+<template lang="html">
+  <div id="home">
+    <m-profile v-if="logged"></m-profile>
+    <m-login v-else></m-login>
+  </div>
+</template>
 
 <style lang="css" scoped></style>

@@ -1,27 +1,3 @@
-<template lang="html">
-  <textarea
-    v-if="type === 'textarea'"
-    :name="name"
-    :required="required"
-    :maxlength="type !== 'number' ? max : ''"
-    :placeholder="placeholder"
-    @change="emitInput($event)"
-  />
-
-  <input
-    v-else
-    :type="type"
-    :name="name"
-    :required="required"
-    :placeholder="placeholder"
-    :min="type === 'number' ? min : ''"
-    :max="type === 'number' ? max : ''"
-    :minlength="type !== 'number' ? min : ''"
-    :maxlength="type !== 'number' ? max : ''"
-    @change="emitInput($event)"
-  />
-</template>
-
 <script>
 export default {
   name: "Input",
@@ -33,6 +9,32 @@ export default {
   }
 };
 </script>
+
+<template lang="html">
+  <textarea
+    v-if="type === 'textarea'"
+    class="input"
+    :name="name"
+    :required="required"
+    :maxlength="type !== 'number' ? max : ''"
+    :placeholder="placeholder"
+    @change="emitInput($event)"
+  />
+
+  <input
+    v-else
+    class="input"
+    :type="type"
+    :name="name"
+    :required="required"
+    :placeholder="placeholder"
+    :min="type === 'number' ? min : ''"
+    :max="type === 'number' ? max : ''"
+    :minlength="type !== 'number' ? min : ''"
+    :maxlength="type !== 'number' ? max : ''"
+    @change="emitInput($event)"
+  />
+</template>
 
 <style lang="css" scoped>
 input,

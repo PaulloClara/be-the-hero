@@ -1,3 +1,22 @@
+<script>
+import Button from "@/components/Button";
+
+export default {
+  name: "Pagination",
+  props: ["totalPages", "currentPage", "pagination"],
+  components: {
+    "m-button": Button
+  },
+  methods: {
+    emitGoTo(page) {
+      if (page < 1 || page > this.totalPages) return;
+
+      this.$emit("goTo", page);
+    }
+  }
+};
+</script>
+
 <template lang="html">
   <div class="pagination">
     <feather
@@ -27,25 +46,6 @@
     ></feather>
   </div>
 </template>
-
-<script>
-import Button from "@/components/Button";
-
-export default {
-  name: "Pagination",
-  props: ["totalPages", "currentPage", "pagination"],
-  components: {
-    "m-button": Button
-  },
-  methods: {
-    emitGoTo(page) {
-      if (page < 1 || page > this.totalPages) return;
-
-      this.$emit("goTo", page);
-    }
-  }
-};
-</script>
 
 <style lang="css" scoped>
 .pagination {

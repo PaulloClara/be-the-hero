@@ -1,7 +1,3 @@
-<template lang="html">
-  <div id="alert"></div>
-</template>
-
 <script>
 export default {
   name: "Alert",
@@ -16,5 +12,9 @@ export default {
   }
 };
 </script>
+
+<template lang="html">
+  <div class="alert"></div>
+</template>
 
 <style lang="css" scoped></style>

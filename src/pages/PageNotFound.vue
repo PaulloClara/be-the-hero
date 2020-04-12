@@ -1,14 +1,3 @@
-<template lang="html">
-  <div id="page-not-found">
-    <h1>404</h1>
-    <p>Página não encontrada!</p>
-
-    <m-link :to="{ name: 'home' }" :icon="['arrow-left', 12, '#e02041']">
-      Voltar para Home
-    </m-link>
-  </div>
-</template>
-
 <script>
 import Link from "@/components/Link";
 
@@ -19,6 +8,17 @@ export default {
   }
 };
 </script>
+
+<template lang="html">
+  <div id="page-not-found">
+    <h1>404</h1>
+    <p>Página não encontrada!</p>
+
+    <m-link :to="{ name: 'home' }" :icon="['arrow-left', 12, '#e02041']">
+      Voltar para Home
+    </m-link>
+  </div>
+</template>
 
 <style lang="css" scoped>
 #page-not-found {

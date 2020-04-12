@@ -1,13 +1,24 @@
+<script>
+export default {
+  name: "Card",
+  methods: {
+    emitRemove(evt) {
+      this.$emit("remove", evt);
+    }
+  }
+};
+</script>
+
 <template lang="html">
   <div class="card">
-    <div>
+    <div class="title">
       <strong>CASO:</strong>
       <p>
         <slot name="title"></slot>
       </p>
     </div>
 
-    <div>
+    <div class="description">
       <strong>DESCRIÇÂO:</strong>
       <p>
         <slot name="description"></slot>
@@ -26,17 +37,6 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  name: "Card",
-  methods: {
-    emitRemove(evt) {
-      this.$emit("remove", evt);
-    }
-  }
-};
-</script>
 
 <style lang="css" scoped>
 .card {

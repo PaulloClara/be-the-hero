@@ -1,21 +1,21 @@
-<template lang="html">
-  <div>
-    <slot name="default"></slot>
-  </div>
-</template>
-
 <script>
 export default {
   name: "Group"
 };
 </script>
 
+<template lang="html">
+  <div class="group">
+    <slot name="default"></slot>
+  </div>
+</template>
+
 <style lang="css" scoped>
-div {
+.group {
   display: flex;
 }
 
-div input + input {
+input + input {
   width: 80px;
   margin-left: 8px;
 }
