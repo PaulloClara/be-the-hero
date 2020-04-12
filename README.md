@@ -1,7 +1,9 @@
 # Be The Hero
 
-[Be The Hero](https://web-bethehero-omnistack11.herokuapp.com) é uma plataforma online feita para ajudar ONGs a encontrarem heróis
+[![Be The Hero][logo]](https://web-bethehero-omnistack11.herokuapp.com) é uma plataforma online feita para ajudar ONGs a encontrarem heróis
 que as ajudem em seus casos.
+
+![Be The Hero][screens]
 
 ## Tecs
 
@@ -37,7 +39,12 @@ vídeos a partir da semana 7.
 
 Este projeto está licenciado sob a licença MIT - consulte o arquivo LICENSE para obter detalhes.
 
-<!-- Citações -->
+<!-- Imagens -->
+
+[logo]: assets/logo.svg "Be The Hero"
+[screens]: assets/screens.svg "Be The Hero"
+
+<!-- Links -->
 
 [vuejs]: https://vuejs.org
 [vuex]: https://vuex.vuejs.org
