@@ -1,6 +1,7 @@
 export const registerSuccess = {
   title: "Aviso importante!",
-  text: "Essa aplicação é um teste, os dados serão resetados em breve...",
+  text:
+    "Essa aplicação é um apenas um teste, os dados serão perdidos assim que o aplicativo reiniciar.",
   icon: "warning"
 };
 
@@ -8,7 +9,8 @@ export function registerError({ code, error, message, validation }) {
   return code === 400 && validation.source === "running"
     ? {
         title: "Email em uso!",
-        text: "Esse email já esta cadastrado no banco de dados.",
+        text:
+          "O Email encontrasse vinculado a uma conta já existente no banco de dados.",
         icon: "error"
       }
     : {
