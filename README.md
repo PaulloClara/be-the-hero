@@ -5,39 +5,40 @@ que as ajudem em seus casos.
 
 ![Be The Hero][screens]
 
-## Tecs
+## :fire: Tecs
 
-- [VueJS] - Framework JavaScript Progressivo <3.
+- [VueJS] - Framework JavaScript progressivo ❤️.
 - [AxiosJS] - Cliente HTTP baseado em promises para o navegador e [NodeJS].
 - [Sweetalert2] - Substituto responsivo e personalizável para as caixas pop-up JavaScript.
 - [FeatherIcons] - Icones Open Source atraves do plugin [VueFeather].
 - [VueSweetalert2] - Um invólucro conveniente para [Sweetalert2].
 - [VueRouter] - Roteador oficial para [VueJS].
 - [CLIPluginPWA] - Plugin da CLI [VueJS] para configuração da PWA (App Web Progressivo).
-- [Vuex] - Vuex é um padrão de gerenciamento de estado para [VueJS].
+- [Vuex] - Padrão de gerenciamento de estado para [VueJS].
 - [VuexMapFields] - Facilita as coisas quando o assunto é formulário + [Vuex].
-- [NodeJS] - Ferramenta de magina negra.
+- [NodeJS] - Ferramenta de magia negra.
 
-### Instalando
+### :wrench: Configure
 
 ```shell
-  $ git clone https://github.com/paulloclara/be-the-hero # Clone o repositório
-  $ cd be-the-hero # Navegue ate a pasta
-  $ yarn -i # Instale as dependencias
-  # Configure o arquivo .env.local de acordo com o .env_example
-  $ yarn start # Execute o servidor
+  $ git clone https://github.com/paulloclara/be-the-hero # Clone o repositório.
+  $ cd be-the-hero # Navegue ate a pasta.
+  $ yarn -i # Instale as dependencias.
+  # Configure o arquivo .env.local de acordo com o .env_example.
+  $ yarn start # Execute o servidor.
+  # OBS: Para executar em modo de desenvolvimento configure antes a API!
 ```
 
-### Créditos
+#### :link: Créditos
 
 O projeto teve como base a [SemanaOmniStack11] da [Rocketseat] feito em
 [ReactJS], os vídeos são apagados ao fim de cada semana, porém… a internet é a
 internet, o canal [CursosReactOmniStack] no Telegram disponibiliza todos os
 vídeos a partir da semana 7.
 
-#### Licença
+#### :memo: Licença
 
-Este projeto está licenciado sob a licença MIT - consulte o arquivo LICENSE para obter detalhes.
+Este projeto está licenciado sob a licença MIT - consulte o arquivo [LICENSE] para obter detalhes.
 
 <!-- Imagens -->
 
@@ -61,3 +62,4 @@ Este projeto está licenciado sob a licença MIT - consulte o arquivo LICENSE pa
 [rocketseat]: https://rocketseat.com.br
 [semanaomnistack11]: https://github.com/DanielObara/SemanaOmnistack11
 [cursosreactomnistack]: https://t.me/reactomnistack
+[license]: LICENSE
