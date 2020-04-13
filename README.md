@@ -1,7 +1,6 @@
 # Be The Hero
 
-[![Be The Hero][logo]](https://web-bethehero-omnistack11.herokuapp.com) é uma plataforma online feita para ajudar ONGs a encontrarem heróis
-que as ajudem em seus casos.
+[![Be The Hero][logo]](https://web-bethehero-omnistack11.herokuapp.com) é uma plataforma online feita para ajudar ONGs a encontrarem heróis que as ajudem nos seus casos.
 
 ![Be The Hero][screens]
 
@@ -26,8 +25,9 @@ que as ajudem em seus casos.
   $ yarn -i # Instale as dependencias.
   # Configure o arquivo .env.local de acordo com o .env_example.
   $ yarn start # Execute o servidor.
-  # OBS: Para executar em modo de desenvolvimento configure antes a API!
 ```
+
+> OBS: Para executar em modo de desenvolvimento configure a [API].
 
 #### :link: Créditos
 
@@ -47,6 +47,8 @@ Este projeto está licenciado sob a licença MIT - consulte o arquivo [LICENSE] 
 
 <!-- Links -->
 
+[paulloclara]: https://github.com/paulloclara
+[api]: https://github.com/paulloclara/be-the-hero-api
 [vuejs]: https://vuejs.org
 [vuex]: https://vuex.vuejs.org
 [nodejs]: https://nodejs.org/en
@@ -63,3 +65,7 @@ Este projeto está licenciado sob a licença MIT - consulte o arquivo [LICENSE] 
 [semanaomnistack11]: https://github.com/DanielObara/SemanaOmnistack11
 [cursosreactomnistack]: https://t.me/reactomnistack
 [license]: LICENSE
+
+---
+
+Projeto de cunho didático feito por [PaulloClara] :octocat:
