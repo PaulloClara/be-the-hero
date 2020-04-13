@@ -3,6 +3,7 @@
 [![Be The Hero][logo]](https://web-bethehero-omnistack11.herokuapp.com) é uma plataforma online feita para ajudar ONGs a encontrarem heróis que as ajudem nos seus casos.
 
 ![Be The Hero][screens]
+![Be The Hero][pwa]
 
 ## :fire: Tecs
 
@@ -42,8 +43,9 @@ Este projeto está licenciado sob a licença MIT - consulte o arquivo [LICENSE] 
 
 <!-- Imagens -->
 
-[logo]: assets/logo.svg "Be The Hero"
-[screens]: assets/screens.svg "Be The Hero"
+[pwa]: assets/pwa.gif "Be The Hero PWA"
+[logo]: assets/logo.svg "Be The Hero Logo"
+[screens]: assets/screens.svg "Be The Hero Screens"
 
 <!-- Links -->
 
