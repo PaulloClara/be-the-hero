@@ -7,6 +7,16 @@ export default {
   components: {
     "m-register-form": Form,
     "m-register-section": Section
+  },
+  methods: {
+    checkAccessPermission() {
+      setTimeout(() => {
+        if (this.$store.state.ong.logged) this.$router.push({ name: "home" });
+      }, 1000);
+    }
+  },
+  mounted() {
+    this.checkAccessPermission();
   }
 };
 </script>

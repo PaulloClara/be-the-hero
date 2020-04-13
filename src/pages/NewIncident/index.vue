@@ -7,6 +7,16 @@ export default {
   components: {
     "m-new-incident-form": Form,
     "m-new-incident-section": Section
+  },
+  methods: {
+    checkAccessPermission() {
+      setTimeout(() => {
+        if (!this.$store.state.ong.logged) this.$router.push({ name: "home" });
+      }, 1000);
+    }
+  },
+  mounted() {
+    this.checkAccessPermission();
   }
 };
 </script>
