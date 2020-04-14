@@ -43,9 +43,9 @@ Este projeto está licenciado sob a licença MIT - consulte o arquivo [LICENSE] 
 
 <!-- Imagens -->
 
-[pwa]: assets/pwa.gif "Be The Hero PWA"
-[logo]: assets/logo.svg "Be The Hero Logo"
-[screens]: assets/screens.svg "Be The Hero Screens"
+[pwa]: .github/pwa.gif "Be The Hero PWA"
+[logo]: .github/logo.svg "Be The Hero Logo"
+[screens]: .github/screens.svg "Be The Hero Screens"
 
 <!-- Links -->
 
