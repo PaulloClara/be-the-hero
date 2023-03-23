@@ -1,5 +1,4 @@
 module.exports = {
-  outputDir: "production/dist",
   pwa: {
     name: "Be The Hero",
     display: "standalone",
@@ -11,7 +10,7 @@ module.exports = {
       start_url: ".",
       short_name: "BTHero",
       description: "Plataforma online para ajudá-lo a se tornar um herói!",
-      background_color: "#000000"
-    }
-  }
+      background_color: "#000000",
+    },
+  },
 };

@@ -4,10 +4,8 @@
   "license": "MIT",
   "author": "paulloclara <paulloclara@gmail.com>",
   "scripts": {
-    "start": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "deploy": "yarn build && yarn submit",
-    "submit": "git-directory-deploy --directory production --branch heroku"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -21,10 +19,10 @@
     "vuex-map-fields": "^1.4.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-pwa": "~4.2.0",
-    "@vue/cli-plugin-router": "~4.2.0",
-    "@vue/cli-plugin-vuex": "~4.2.0",
-    "@vue/cli-service": "~4.2.0",
+    "@vue/cli-plugin-pwa": "~5.0.8",
+    "@vue/cli-plugin-router": "~5.0.8",
+    "@vue/cli-plugin-vuex": "~5.0.8",
+    "@vue/cli-service": "~5.0.8",
     "git-directory-deploy": "^1.5.1",
     "vue-template-compiler": "^2.6.11"
   }
