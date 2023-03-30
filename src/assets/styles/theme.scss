@@ -1,0 +1,22 @@
+:root {
+  --primary-color: #e02041;
+  --primary-text-color: #41414d;
+  --secondary-text-color: #737380;
+  --primary-background-color: #fff;
+  --secondary-background-color: #f0f0f5;
+
+  --scrollbar-track-background: #f0f0f5;
+  --scrollbar-thumb-background: #ddd;
+  --scrollbar-thumb-hover-background: #ccc;
+
+  .app-is-dark {
+    --primary-text-color: #fff;
+    --secondary-text-color: #eee;
+    --primary-background-color: #333;
+    --secondary-background-color: #000;
+
+    --scrollbar-track-background: #000;
+    --scrollbar-thumb-background: #222;
+    --scrollbar-thumb-hover-background: #333;
+  }
+}

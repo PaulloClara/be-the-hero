@@ -1,9 +1,4 @@
-export default ({
-  totalPages,
-  currentPage,
-  totalButtonsLeft,
-  totalButtonsRight
-}) => {
+export default ({ totalPages, currentPage, totalButtonsLeft, totalButtonsRight }: any) => {
   const pages = [];
   const totalButtons = totalButtonsLeft + totalButtonsRight;
 
@@ -13,8 +8,7 @@ export default ({
       : currentPage + totalButtonsRight > totalPages
       ? totalPages - totalButtons
       : currentPage - totalButtonsLeft;
-  const end =
-    start + totalButtons >= totalPages ? totalPages : start + totalButtons;
+  const end = start + totalButtons >= totalPages ? totalPages : start + totalButtons;
 
   for (let i = start; i <= end; i++) pages.push(i);
 

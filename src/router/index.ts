@@ -1,42 +1,24 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
-import VHome from "@/views/HomeView.vue";
-import VNewIncident from "@/views/NewIncident/NewIncident.vue";
-import VRegister from "@/views/Register.vue";
-import VLogin from "@/views/Login.vue";
-import VProfile from "@/views/Profile.vue";
-import VPageNotFound from "@/views/PageNotFound.vue";
+import AppHome from "@/views/AppHome.vue";
+import AppLogin from "@/views/AppLogin.vue";
+import AppPageNotFound from "@/views/AppPageNotFound.vue";
 
 const routes: RouteRecordRaw[] = [
   {
     path: "/",
     name: "home",
-    component: VHome,
+    component: AppHome,
   },
   {
-    path: "/incidentes/adicionar",
-    name: "new-incident",
-    component: VNewIncident,
-  },
-  {
-    path: "/login",
+    path: "/entrar",
     name: "login",
-    component: VLogin,
+    component: AppLogin,
   },
   {
-    path: "/cadastre-se",
-    name: "register",
-    component: VRegister,
-  },
-  {
-    path: "/perfil",
-    name: "profile",
-    component: VProfile,
-  },
-  {
-    path: "*",
+    path: "/:pathMatch(.*)*",
     name: "page-not-found",
-    component: VPageNotFound,
+    component: AppPageNotFound,
   },
 ];
 

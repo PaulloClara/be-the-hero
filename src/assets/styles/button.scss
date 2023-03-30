@@ -1,0 +1,54 @@
+button {
+  outline: none;
+}
+
+.app-submit-button {
+  display: inline-block;
+  width: 100%;
+  height: 3.25em;
+  margin-top: 0.5em;
+  border: 0;
+  outline: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.25px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: var(--primary-color);
+
+  &:hover {
+    filter: brightness(110%);
+  }
+
+  &:active {
+    transform: translateY(4px);
+  }
+}
+
+#app-switch-theme {
+  position: fixed;
+  right: 0;
+  bottom: 0.5em;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75em;
+  height: 1.75em;
+  border: none;
+  border-radius: 50%;
+  opacity: 0.9;
+  cursor: pointer;
+  color: var(--primary-text-color);
+  font-size: 1.25em;
+  transition: all 0.5s;
+  background-color: var(--primary-background-color);
+
+  &:hover {
+    opacity: 1;
+    box-shadow: #00000029 0px 1px 4px;
+  }
+}
