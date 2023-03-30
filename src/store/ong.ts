@@ -1,4 +1,4 @@
-import Api from "@/services/api";
+import Api from "@/services/be-the-hero";
 import { getField, updateField } from "vuex-map-fields";
 
 export default {
@@ -12,11 +12,11 @@ export default {
       city: "",
       uf: "",
       created_at: "",
-      token: ""
+      token: "",
     },
     login: {
       email: "",
-      password: ""
+      password: "",
     },
     register: {
       name: "",
@@ -24,11 +24,11 @@ export default {
       whatsapp: "",
       city: "",
       uf: "",
-      password: ""
-    }
+      password: "",
+    },
   },
   getters: {
-    getField
+    getField,
   },
   mutations: {
     updateSession(state, { token }) {
@@ -51,13 +51,13 @@ export default {
       state.register.uf = uf;
     },
 
-    updateField
+    updateField,
   },
   actions: {
     async getProfile({ commit }, { token }) {
       try {
         const response = await Api.get("/sessions", {
-          headers: { Authorization: `Bearer ${token}` }
+          headers: { Authorization: `Bearer ${token}` },
         });
 
         this.commit("updateStatus", response);
@@ -95,7 +95,7 @@ export default {
       } catch ({ response }) {
         this.commit("updateStatus", response);
       }
-    }
+    },
   },
-  namespaced: true
+  namespaced: true,
 };

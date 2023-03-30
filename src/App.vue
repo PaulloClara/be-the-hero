@@ -1,4 +1,4 @@
-<script>
+<script lang="ts" setup>
 import { mapMutations } from "vuex";
 
 import Alert from "@/components/Alert";
@@ -8,7 +8,7 @@ export default {
   name: "App",
   components: {
     "m-alert": Alert,
-    "m-loading": Loading
+    "m-loading": Loading,
   },
   computed: {
     loading() {
@@ -17,7 +17,7 @@ export default {
 
     alert() {
       return this.$store.state.alert.show;
-    }
+    },
   },
   methods: {
     async startSession() {
@@ -25,7 +25,7 @@ export default {
       await this.$store.dispatch("ong/getProfile", { token });
 
       this.$store.commit("ong/updateSession", {
-        token: this.$store.state.status.code === 200 ? token : ""
+        token: this.$store.state.status.code === 200 ? token : "",
       });
 
       this.$store.commit("updateLoading", { active: false });
@@ -36,7 +36,7 @@ export default {
       this.updateWindowSize();
     },
 
-    ...mapMutations(["updateWindowSize"])
+    ...mapMutations(["updateWindowSize"]),
   },
   mounted() {
     this.addResizeEvent();
@@ -47,11 +47,11 @@ export default {
 
   destroyed() {
     window.removeEventListener("resize", this.updateWindowSize);
-  }
+  },
 };
 </script>
 
-<template lang="html">
+<template>
   <main id="app">
     <m-alert v-if="alert"></m-alert>
     <m-loading v-if="loading"></m-loading>

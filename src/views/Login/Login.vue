@@ -1,19 +1,19 @@
-<script>
+<script lang="ts" setup>
 import { mapGetters } from "vuex";
 import Form from "@/views/Login/Form";
 
 export default {
   name: "Login",
   components: {
-    "m-login-form": Form
+    "m-login-form": Form,
   },
   computed: {
-    ...mapGetters(["mdWindow"])
-  }
+    ...mapGetters(["mdWindow"]),
+  },
 };
 </script>
 
-<template lang="html">
+<template>
   <div id="login">
     <section>
       <img src="@/assets/logo.svg" alt="Be The Hero" />
@@ -25,7 +25,7 @@ export default {
   </div>
 </template>
 
-<style lang="css" scoped>
+<style lang="scss">
 #login {
   display: flex;
 

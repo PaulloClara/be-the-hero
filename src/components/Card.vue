@@ -1,16 +1,13 @@
-<script>
-export default {
-  name: "Card",
-  methods: {
-    emitRemove(evt) {
-      this.$emit("remove", evt);
-    }
-  }
-};
+<script lang="ts" setup>
+const emits = defineEmits(["remove"]);
+
+function emitRemove(event: any) {
+  emits("remove", event);
+}
 </script>
 
-<template lang="html">
-  <div class="card">
+<template>
+  <div class="c-card">
     <div class="title">
       <strong>CASO:</strong>
       <p>
@@ -38,8 +35,8 @@ export default {
   </div>
 </template>
 
-<style lang="css" scoped>
-.card {
+<style lang="scss">
+.c-card {
   display: grid;
 
   gap: 12px;

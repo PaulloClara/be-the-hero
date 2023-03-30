@@ -1,4 +1,7 @@
-module.exports = {
+const { defineConfig } = require("@vue/cli-service");
+module.exports = defineConfig({
+  transpileDependencies: true,
+  lintOnSave: false,
   pwa: {
     name: "Be The Hero",
     display: "standalone",
@@ -13,4 +16,4 @@ module.exports = {
       background_color: "#000000",
     },
   },
-};
+});

@@ -1,15 +1,15 @@
-<script>
+<script lang="ts" setup>
 import Link from "@/components/Link";
 
 export default {
   name: "RegisterSection",
   components: {
-    "m-link": Link
-  }
+    "m-link": Link,
+  },
 };
 </script>
 
-<template lang="html">
+<template>
   <section>
     <img src="@/assets/logo.svg" alt="Be The Hero" />
 
@@ -25,7 +25,7 @@ export default {
   </section>
 </template>
 
-<style lang="css" scoped>
+<style lang="scss">
 section {
   width: 100%;
   max-width: 380px;

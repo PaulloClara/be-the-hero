@@ -1,13 +1,18 @@
-export default {
+import { createStore } from "vuex";
+
+import ong from "@/store/ong";
+import incident from "@/store/incident";
+
+export default createStore({
   state: {
     loading: true,
     window: {
       width: 0,
-      height: 0
+      height: 0,
     },
     pagination: {
       buttonsLeft: 4,
-      buttonsRight: 4
+      buttonsRight: 4,
     },
     alert: {
       configs: {
@@ -15,9 +20,9 @@ export default {
         text: "",
         icon: "",
         confirmButtonText: "OK",
-        confirmButtonColor: "#e02041"
+        confirmButtonColor: "#e02041",
       },
-      show: false
+      show: false,
     },
     status: {
       code: 200,
@@ -25,9 +30,9 @@ export default {
       message: "",
       validation: {
         source: "",
-        keys: []
-      }
-    }
+        keys: [],
+      },
+    },
   },
   getters: {
     xsWindow(state) {
@@ -48,7 +53,7 @@ export default {
 
     xlWindow(state) {
       return state.window.width > 1920;
-    }
+    },
   },
   mutations: {
     updateStatus(state, { status, data }) {
@@ -96,12 +101,13 @@ export default {
       state.window.height = window.innerHeight;
 
       this.commit("updatePaginationLength");
-    }
+    },
   },
   actions: {
     showAlert({ commit }, { title, text, icon }) {
       commit("updateAlert", { title, text, icon });
       commit("updateAlertStatus", { show: true });
-    }
-  }
-};
+    },
+  },
+  modules: { ong, incident },
+});

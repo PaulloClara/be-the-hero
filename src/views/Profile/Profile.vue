@@ -1,4 +1,4 @@
-<script>
+<script lang="ts" setup>
 import List from "@/views/Profile/List";
 import Header from "@/views/Profile/Header";
 import Pagination from "@/components/Pagination";
@@ -8,7 +8,7 @@ export default {
   components: {
     "m-profile-list": List,
     "m-pagination": Pagination,
-    "m-profile-header": Header
+    "m-profile-header": Header,
   },
   computed: {
     totalPages() {
@@ -21,20 +21,20 @@ export default {
 
     pagination() {
       return this.$store.state.incident.page.pagination;
-    }
+    },
   },
   methods: {
     async handleGoTo(page) {
       await this.$store.dispatch("incident/getPage", { page });
-    }
+    },
   },
   mounted() {
     this.handleGoTo(1);
-  }
+  },
 };
 </script>
 
-<template lang="html">
+<template>
   <div id="profile">
     <m-profile-header></m-profile-header>
 
@@ -60,7 +60,7 @@ export default {
   </div>
 </template>
 
-<style lang="css" scoped>
+<style lang="scss">
 #profile {
   width: 90%;
   max-width: 1600px;

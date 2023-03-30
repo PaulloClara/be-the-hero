@@ -1,4 +1,4 @@
-<script>
+<script lang="ts" setup>
 import { mapFields } from "vuex-map-fields";
 import { loginError } from "@/utils/alerts";
 
@@ -11,10 +11,10 @@ export default {
   components: {
     "m-link": Link,
     "m-input": Input,
-    "m-button": Button
+    "m-button": Button,
   },
   computed: {
-    ...mapFields("ong", ["login.email", "login.password"])
+    ...mapFields("ong", ["login.email", "login.password"]),
   },
   methods: {
     async handleSubmit() {
@@ -27,12 +27,12 @@ export default {
       const { status } = this.$store.state;
       if (status.code !== 200)
         return this.$store.dispatch("showAlert", loginError(status));
-    }
-  }
+    },
+  },
 };
 </script>
 
-<template lang="html">
+<template>
   <form @submit.prevent="handleSubmit">
     <h1>Faça seu login</h1>
 
@@ -60,7 +60,7 @@ export default {
   </form>
 </template>
 
-<style lang="css" scoped>
+<style lang="scss">
 form {
   margin-top: 100px;
 }

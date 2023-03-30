@@ -1,16 +1,16 @@
-<script>
+<script lang="ts" setup>
 import Card from "@/components/Card";
 import { removeIncidentError } from "@/utils/alerts";
 
 export default {
   name: "ProfileList",
   components: {
-    "m-card": Card
+    "m-card": Card,
   },
   computed: {
     incidents() {
       return this.$store.state.incident.page.incidents;
-    }
+    },
   },
   methods: {
     async handleRemove(incident) {
@@ -20,12 +20,12 @@ export default {
       const { status } = this.$store.state;
       if (status.code !== 200)
         this.$store.dispatch("showAlert", removeIncidentError(status));
-    }
-  }
+    },
+  },
 };
 </script>
 
-<template lang="html">
+<template>
   <ul>
     <li v-for="incident in incidents" :key="incident.id">
       <m-card @remove="handleRemove(incident)">
@@ -35,7 +35,7 @@ export default {
           {{
             Intl.NumberFormat("pt-BR", {
               style: "currency",
-              currency: "BRL"
+              currency: "BRL",
             }).format(incident.value)
           }}
         </template>
@@ -44,7 +44,7 @@ export default {
   </ul>
 </template>
 
-<style lang="css" scoped>
+<style lang="scss">
 ul {
   display: grid;
 

@@ -1,15 +1,15 @@
-<script>
+<script lang="ts" setup>
 import Link from "@/components/Link";
 
 export default {
   name: "PageNotFound",
   components: {
-    "m-link": Link
-  }
+    "m-link": Link,
+  },
 };
 </script>
 
-<template lang="html">
+<template>
   <div id="page-not-found">
     <h1>404</h1>
     <p>Página não encontrada!</p>
@@ -20,7 +20,7 @@ export default {
   </div>
 </template>
 
-<style lang="css" scoped>
+<style lang="scss">
 #page-not-found {
   display: flex;
   flex-direction: column;

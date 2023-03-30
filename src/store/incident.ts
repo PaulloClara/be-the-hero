@@ -1,7 +1,5 @@
-import { getField, updateField } from "vuex-map-fields";
-
-import Api from "@/services/api";
-import paginationLogic from "@/utils/pagination-logic";
+import Api from "@/services/be-the-hero";
+import paginationLogic from "@/utils/pagination";
 
 export default {
   state: {
@@ -20,25 +18,25 @@ export default {
             city: "Teresina",
             email: "bethehero@ong.com",
             uf: "PI",
-            whatsapp: "86999999999"
+            whatsapp: "86999999999",
           },
-          created_at: "2020-04-05 02:16:17"
-        }
+          created_at: "2020-04-05 02:16:17",
+        },
       ],
       total: 0,
       pages: 0,
       limit: 12,
       current: 1,
-      pagination: []
+      pagination: [],
     },
     register: {
       title: "",
       value: "",
-      description: ""
-    }
+      description: "",
+    },
   },
   getters: {
-    getField
+    getField,
   },
   mutations: {
     updatePage(state, { incidents, current, limit, total }) {
@@ -54,7 +52,7 @@ export default {
         totalPages: state.page.pages,
         currentPage: state.page.current,
         totalButtonsLeft: this.state.pagination.buttonsLeft,
-        totalButtonsRight: this.state.pagination.buttonsRight
+        totalButtonsRight: this.state.pagination.buttonsRight,
       });
     },
 
@@ -68,7 +66,7 @@ export default {
       state.register.description = description;
     },
 
-    updateField
+    updateField,
   },
   actions: {
     async getPage({ commit }, { page, limit = 12 }) {
@@ -90,7 +88,7 @@ export default {
     async getSessionIncidents({ commit }, { token }) {
       try {
         const response = await Api.get("/sessions/incidents", {
-          headers: { Authorization: `Bearer ${token}` }
+          headers: { Authorization: `Bearer ${token}` },
         });
 
         this.commit("updateStatus", response);
@@ -111,7 +109,7 @@ export default {
           "/incidents",
           { title, value, description },
           {
-            headers: { Authorization: `Bearer ${token}` }
+            headers: { Authorization: `Bearer ${token}` },
           }
         );
 
@@ -130,7 +128,7 @@ export default {
     async delete({ state, commit, dispatch }, { id, token }) {
       try {
         const response = await Api.delete(`/incidents/${id}`, {
-          headers: { Authorization: `Bearer ${token}` }
+          headers: { Authorization: `Bearer ${token}` },
         });
 
         this.commit("updateStatus", response);
@@ -138,14 +136,14 @@ export default {
 
         await dispatch("getPage", { page: state.page.current });
 
-        const index = state.session.findIndex(incident => incident.id === id);
+        const index = state.session.findIndex((incident) => incident.id === id);
         const incidents = state.session.splice(index, 1);
 
         commit("updateIncidents", { incidents });
       } catch ({ response }) {
         this.commit("updateStatus", response);
       }
-    }
+    },
   },
-  namespaced: true
+  namespaced: true,
 };

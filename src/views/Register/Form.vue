@@ -1,4 +1,4 @@
-<script>
+<script lang="ts" setup>
 import { mapFields } from "vuex-map-fields";
 import { registerError, registerSuccess } from "@/utils/alerts";
 
@@ -11,7 +11,7 @@ export default {
   components: {
     "m-group": Group,
     "m-input": Input,
-    "m-button": Button
+    "m-button": Button,
   },
   computed: {
     ...mapFields("ong", [
@@ -20,8 +20,8 @@ export default {
       "register.password",
       "register.whatsapp",
       "register.city",
-      "register.uf"
-    ])
+      "register.uf",
+    ]),
   },
   methods: {
     async handleSubmit() {
@@ -35,7 +35,7 @@ export default {
         password,
         whatsapp,
         city,
-        uf
+        uf,
       });
 
       this.$store.commit("updateLoading", { active: false });
@@ -59,14 +59,14 @@ export default {
         password: "",
         whatsapp: "",
         city: "",
-        uf: ""
+        uf: "",
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
-<template lang="html">
+<template>
   <form ref="registerOng" @submit.prevent="handleSubmit">
     <m-input
       v-model.trim="name"
@@ -122,7 +122,7 @@ export default {
   </form>
 </template>
 
-<style lang="css" scoped>
+<style lang="scss">
 form {
   width: 100%;
   max-width: 450px;

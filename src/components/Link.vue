@@ -1,23 +1,20 @@
-<script>
-export default {
-  name: "Link",
-  props: ["icon", "to"]
-};
+<script lang="ts" setup>
+defineProps<{ icon: { type: string; size: number; stroke: any }; to: any }>();
 </script>
 
-<template lang="html">
-  <router-link class="link" :to="to">
-    <feather :type="icon[0]" :size="icon[1]" :stroke="icon[2]"></feather>
+<template>
+  <router-link class="c-link" :to="to">
+    <feather
+      :type="icon.type"
+      :size="icon.size"
+      :stroke="icon.stroke"
+    ></feather>
     <slot name="default"></slot>
   </router-link>
 </template>
 
-<style lang="css" scoped>
-i {
-  margin-right: 8px;
-}
-
-a {
+<style lang="scss">
+.c-link {
   display: flex;
   align-items: center;
 
@@ -28,9 +25,13 @@ a {
   font-weight: 500;
 
   transition: opacity 0.2s;
-}
 
-a:hover {
-  opacity: 0.8;
+  i {
+    margin-right: 8px;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 </style>

@@ -1,25 +1,25 @@
-<script>
+<script lang="ts" setup>
 import Button from "@/components/Button";
 
 export default {
   name: "ProfileHeader",
   components: {
-    "m-button": Button
+    "m-button": Button,
   },
   computed: {
     ongName() {
       return this.$store.state.ong.profile.name;
-    }
+    },
   },
   methods: {
     handleLogout() {
       this.$store.commit("ong/updateSession", { token: "" });
-    }
-  }
+    },
+  },
 };
 </script>
 
-<template lang="html">
+<template>
   <header>
     <img src="@/assets/logo.svg" alt="Be The Hero" />
     <span>Bem vindo, {{ ongName }}</span>
@@ -36,7 +36,7 @@ export default {
   </header>
 </template>
 
-<style lang="css" scoped>
+<style lang="scss">
 header {
   display: flex;
   align-items: center;

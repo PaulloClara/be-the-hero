@@ -1,37 +1,37 @@
-<script>
-import Form from "@/pages/Register/Form";
-import Section from "@/pages/Register/Section";
+<script lang="ts" setup>
+import Form from "@/pages/NewIncident/Form";
+import Section from "@/pages/NewIncident/Section";
 
 export default {
-  name: "Register",
+  name: "NewIncident",
   components: {
-    "m-register-form": Form,
-    "m-register-section": Section
+    "m-new-incident-form": Form,
+    "m-new-incident-section": Section,
   },
   methods: {
     checkAccessPermission() {
       setTimeout(() => {
-        if (this.$store.state.ong.logged) this.$router.push({ name: "home" });
+        if (!this.$store.state.ong.logged) this.$router.push({ name: "home" });
       }, 1000);
-    }
+    },
   },
   mounted() {
     this.checkAccessPermission();
-  }
+  },
 };
 </script>
 
-<template lang="html">
-  <div id="register">
+<template>
+  <div id="new-incident">
     <div>
-      <m-register-section></m-register-section>
-      <m-register-form></m-register-form>
+      <m-new-incident-section></m-new-incident-section>
+      <m-new-incident-form></m-new-incident-form>
     </div>
   </div>
 </template>
 
-<style lang="css" scoped>
-#register {
+<style lang="scss">
+#new-incident {
   display: flex;
 
   align-items: center;
@@ -44,7 +44,7 @@ export default {
   margin: 0 auto;
 }
 
-#register > div {
+#new-incident > div {
   display: flex;
 
   align-items: center;
@@ -60,11 +60,14 @@ export default {
 }
 
 @media only screen and (max-width: 800px) {
-  #register {
-    align-items: flex-start;
+  #new-incident {
+    height: auto;
+
+    margin: 0;
+    text-align: center;
   }
 
-  #register > div {
+  #new-incident > div {
     flex-direction: column;
     padding: 12px;
   }

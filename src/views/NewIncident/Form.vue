@@ -1,4 +1,4 @@
-<script>
+<script lang="ts" setup>
 import { mapFields } from "vuex-map-fields";
 import { registerIncidentError } from "@/utils/alerts";
 
@@ -9,14 +9,14 @@ export default {
   name: "NewIncidentForm",
   components: {
     "m-input": Input,
-    "m-button": Button
+    "m-button": Button,
   },
   computed: {
     ...mapFields("incident", [
       "register.title",
       "register.value",
-      "register.description"
-    ])
+      "register.description",
+    ]),
   },
 
   methods: {
@@ -29,7 +29,7 @@ export default {
         token: this.$store.state.ong.profile.token,
         title,
         value,
-        description
+        description,
       });
 
       this.$store.commit("updateLoading", { active: false });
@@ -48,14 +48,14 @@ export default {
       this.$store.commit("incident/updateForm", {
         title: "",
         value: "",
-        description: ""
+        description: "",
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
-<template lang="html">
+<template>
   <form ref="newIncident" @submit.prevent="handleSubmit">
     <m-input
       v-model.trim="title"
@@ -83,7 +83,7 @@ export default {
   </form>
 </template>
 
-<style lang="css" scoped>
+<style lang="scss">
 form {
   width: 100%;
   max-width: 450px;
