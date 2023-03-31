@@ -1,12 +1,19 @@
 <script lang="ts" setup>
 import { InputHTMLAttributes } from "vue";
 
-withDefaults(defineProps<{ type: "textarea" | InputHTMLAttributes["type"] }>(), { type: "text" });
+const emits = defineEmits(["update:modelValue"]);
+withDefaults(defineProps<{ modelValue: any; type: "textarea" | InputHTMLAttributes["type"] }>(), {
+  type: "text",
+});
+
+function handleInput(event: any) {
+  emits("update:modelValue", event?.target?.value);
+}
 </script>
 
 <template>
-  <textarea class="app-input" v-if="type === 'textarea'"></textarea>
-  <input class="app-input" :type="type" v-else />
+  <textarea class="app-input" v-if="type === 'textarea'" @input="handleInput"></textarea>
+  <input class="app-input" :type="type" v-else @input="handleInput" />
 </template>
 
 <style lang="scss">

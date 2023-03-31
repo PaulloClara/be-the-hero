@@ -16,7 +16,7 @@ type UserStateT = {
 
 export const useUserStore = defineStore("user", {
   state: (): UserStateT => ({
-    user: null,
+    user: JSON.parse(localStorage.getItem("USER") || "null") || null,
   }),
   actions: {},
 });

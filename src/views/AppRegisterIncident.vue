@@ -42,7 +42,6 @@ onUnmounted(() => setBodyScroll("unset"));
         <h2 class="app-incident-register-subtitle">
           Descreva o caso detalhadamente para encontrar um herói para resolver isso.
         </h2>
-
         <app-link
           class="app-incident-register-home"
           :to="{ name: 'home' }"

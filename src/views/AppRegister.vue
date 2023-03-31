@@ -1,8 +1,25 @@
 <script lang="ts" setup>
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+
 import AppLink from "@/components/AppLink.vue";
 import AppInput from "@/components/AppInput.vue";
 
-function handleSubmit() {}
+import { UserFormT } from "@/stores/auth";
+import { useAuthStore } from "@/stores/auth";
+
+const router = useRouter();
+const authStore = useAuthStore();
+const form = ref(generateForm());
+
+function generateForm(): UserFormT {
+  return { name: "", email: "", password: "", whatsapp: "", city: "", uf: "" };
+}
+
+function handleSubmit() {
+  authStore.registerUser({ form: form.value });
+  router.replace({ name: "home" });
+}
 </script>
 
 <template>
@@ -14,20 +31,19 @@ function handleSubmit() {}
         <h2 class="app-register-subtitle">
           Faça seu cadastro, entre na plataforma e ajude pessoas a encontrarem os casos da sua ONG.
         </h2>
-
         <app-link class="app-register-login" :to="{ name: 'login' }" icon="fa-solid fa-arrow-left">
           Já tenho uma conta
         </app-link>
       </div>
 
       <form class="app-register-form" @submit.prevent="handleSubmit">
-        <app-input type="text" placeholder="Nome" required />
-        <app-input type="email" placeholder="Seu e-mail" required />
-        <app-input type="password" placeholder="Sua senha" required />
-        <app-input type="tel" placeholder="WhatsApp" required />
+        <app-input v-model="form.name" type="text" placeholder="Nome" required />
+        <app-input v-model="form.email" type="email" placeholder="E-mail" required />
+        <app-input v-model="form.password" type="password" placeholder="Senha" required />
+        <app-input v-model="form.whatsapp" type="tel" placeholder="WhatsApp" required />
         <div class="app-register-form-group">
-          <app-input type="text" placeholder="Cidade" required />
-          <app-input type="text" placeholder="UF" required />
+          <app-input v-model="form.city" type="text" placeholder="Cidade" required />
+          <app-input v-model="form.uf" type="text" placeholder="UF" maxlength="2" required />
         </div>
         <button class="app-button" type="submit">Cadastrar</button>
       </form>

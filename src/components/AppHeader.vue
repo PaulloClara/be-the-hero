@@ -1,7 +1,28 @@
 <script lang="ts" setup>
-const user = { name: "Visitante" };
+import { computed } from "vue";
+import { useRouter } from "vue-router";
 
-function handleLogout() {}
+import { useAuthStore } from "@/stores/auth";
+import { useUserStore } from "@/stores/user";
+
+const router = useRouter();
+const authStore = useAuthStore();
+const userStore = useUserStore();
+
+const user = computed(() => userStore.user);
+
+function handleLogout() {
+  authStore.logoutSession();
+}
+
+function goToLogin() {
+  router.push({ name: "login" });
+}
+
+function goToRegisterIncident() {
+  if (user.value) return router.push({ name: "register-incident" });
+  goToLogin();
+}
 </script>
 
 <template>
@@ -9,15 +30,16 @@ function handleLogout() {}
     <div class="app-header-welcome">
       <img class="app-header-logo" src="@/assets/images/logo.svg" alt="Be The Hero" />
       <h1 class="app-header-welcome-message">
-        Bem-vindo, <b>{{ user.name }}</b>
+        Bem-vindo, <b>{{ user?.name || "Visitante" }}</b>
       </h1>
     </div>
     <div class="app-header-options">
-      <router-link class="app-button" :to="{ name: 'register-incident' }">
-        Cadastrar novo caso
-      </router-link>
-      <button class="app-header-logout" @click="handleLogout">
+      <button class="app-button" @click="goToRegisterIncident">Cadastrar novo caso</button>
+      <button class="app-header-logout" title="Sair" @click="handleLogout" v-if="user">
         <i class="fa-solid fa-power-off"></i>
+      </button>
+      <button class="app-header-logout" title="Entrar" @click="goToLogin" v-else>
+        <i class="fa-solid fa-arrow-right-to-bracket"></i>
       </button>
     </div>
   </header>

@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
+import { guardCheckAuth } from "@/router/guard";
+
 import AppHome from "@/views/AppHome.vue";
 import AppLogin from "@/views/AppLogin.vue";
 import AppRegister from "@/views/AppRegister.vue";
@@ -15,6 +17,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: "/incidentes/adicionar",
         name: "register-incident",
+        meta: { requiresAuth: true },
         component: AppRegisterIncident,
       },
     ],
@@ -40,5 +43,7 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
+
+router.beforeEach(guardCheckAuth);
 
 export default router;

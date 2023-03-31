@@ -1,6 +1,16 @@
 <script lang="ts" setup>
+import { ref } from "vue";
+
 import AppLink from "@/components/AppLink.vue";
 import AppInput from "@/components/AppInput.vue";
+
+import { LoginFormT } from "@/stores/auth";
+
+const form = ref(generateForm());
+
+function generateForm(): LoginFormT {
+  return { email: "", password: "" };
+}
 
 function handleSubmit() {}
 </script>
@@ -12,8 +22,8 @@ function handleSubmit() {}
       <h1 class="app-login-title">Faça seu login</h1>
 
       <form class="app-login-form" @submit.prevent="handleSubmit">
-        <app-input type="email" placeholder="Seu e-mail" required />
-        <app-input type="password" placeholder="Sua senha" required />
+        <app-input v-model="form.email" type="email" placeholder="Seu e-mail" required />
+        <app-input v-model="form.password" type="password" placeholder="Sua senha" required />
         <button class="app-button" type="submit">Entrar</button>
       </form>
 
