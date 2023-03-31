@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --port 6100",
     "build": "NODE_ENV=production vue-cli-service build --mode prod",
     "lint": "vue-cli-service lint"
   },

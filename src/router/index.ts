@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
 import AppHome from "@/views/AppHome.vue";
 import AppLogin from "@/views/AppLogin.vue";
+import AppRegister from "@/views/AppRegister.vue";
 import AppPageNotFound from "@/views/AppPageNotFound.vue";
 
 const routes: RouteRecordRaw[] = [
@@ -14,6 +15,11 @@ const routes: RouteRecordRaw[] = [
     path: "/entrar",
     name: "login",
     component: AppLogin,
+  },
+  {
+    path: "/cadastre-se",
+    name: "register",
+    component: AppRegister,
   },
   {
     path: "/:pathMatch(.*)*",

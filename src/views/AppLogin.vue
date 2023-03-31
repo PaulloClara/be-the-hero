@@ -12,14 +12,14 @@ function handleSubmit() {}
       <h1 class="app-login-title">Faça seu login</h1>
 
       <form class="app-login-form" @submit.prevent="handleSubmit">
-        <app-input type="email" placeholder="Seu e-mail" />
-        <app-input type="password" placeholder="Sua senha" />
+        <app-input type="email" placeholder="Seu e-mail" required />
+        <app-input type="password" placeholder="Sua senha" required />
         <button class="app-submit-button" type="submit">Entrar</button>
       </form>
 
       <app-link
         class="app-login-register"
-        :to="{ name: 'home' }"
+        :to="{ name: 'register' }"
         icon="fa-solid fa-arrow-right-to-bracket"
       >
         Não tenho cadastro
