@@ -26,7 +26,7 @@ withDefaults(defineProps<{ type: "textarea" | InputHTMLAttributes["type"] }>(), 
 textarea.app-input {
   min-height: 140px;
   padding: 1em 1.5em;
-  resize: vertical;
+  resize: none;
   line-height: 1.5em;
 }
 </style>

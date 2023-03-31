@@ -14,7 +14,7 @@ function handleSubmit() {}
       <form class="app-login-form" @submit.prevent="handleSubmit">
         <app-input type="email" placeholder="Seu e-mail" required />
         <app-input type="password" placeholder="Sua senha" required />
-        <button class="app-submit-button" type="submit">Entrar</button>
+        <button class="app-button" type="submit">Entrar</button>
       </form>
 
       <app-link
@@ -68,6 +68,10 @@ function handleSubmit() {}
   .app-login-people {
     width: 100%;
     max-width: 34em;
+  }
+
+  .app-button {
+    margin-top: 0.5em;
   }
 
   @media only screen and (max-width: 900px) {

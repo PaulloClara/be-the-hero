@@ -3,6 +3,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import AppHome from "@/views/AppHome.vue";
 import AppLogin from "@/views/AppLogin.vue";
 import AppRegister from "@/views/AppRegister.vue";
+import AppRegisterIncident from "@/views/AppRegisterIncident.vue";
 import AppPageNotFound from "@/views/AppPageNotFound.vue";
 
 const routes: RouteRecordRaw[] = [
@@ -10,6 +11,13 @@ const routes: RouteRecordRaw[] = [
     path: "/",
     name: "home",
     component: AppHome,
+    children: [
+      {
+        path: "/incidentes/adicionar",
+        name: "register-incident",
+        component: AppRegisterIncident,
+      },
+    ],
   },
   {
     path: "/entrar",

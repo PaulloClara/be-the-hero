@@ -14,6 +14,7 @@
     "pinia": "^2.0.33",
     "register-service-worker": "^1.7.2",
     "vue": "^3.2.13",
+    "vue-currency-input": "^3.0.4",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
   },

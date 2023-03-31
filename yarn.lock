@@ -6694,6 +6694,11 @@ vary@~1.1.2:
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
+vue-currency-input@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/vue-currency-input/-/vue-currency-input-3.0.4.tgz#b9e01855157160549c19f98c1350fb05097dee54"
+  integrity sha512-t6rPAGR60aLf4s24cROwh2pDKZ/38rqUVcvt7xiZVZfPKGwZaZccEX7DPEFH6autrL+me0n7RrwiQYinyj4ZMg==
+
 vue-demi@*:
   version "0.13.11"
   resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.13.11.tgz#7d90369bdae8974d87b1973564ad390182410d99"

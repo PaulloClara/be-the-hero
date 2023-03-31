@@ -1,9 +1,16 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import AppHeader from "@/components/AppHeader.vue";
+</script>
 
 <template>
-  <div id="home-view">
-    <h1>HOME</h1>
+  <div id="app-home">
+    <app-header />
+    <router-view />
   </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+#app-home {
+  position: relative;
+}
+</style>

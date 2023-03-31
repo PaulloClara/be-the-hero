@@ -1,23 +1,7 @@
 button {
   outline: none;
-}
-
-.app-submit-button {
-  display: inline-block;
-  width: 100%;
-  height: 3.25em;
-  margin-top: 0.5em;
-  border: 0;
-  outline: none;
-  border-radius: 8px;
-  color: #fff;
-  font-size: 1.1em;
-  font-weight: 700;
-  text-align: center;
-  letter-spacing: 0.25px;
   cursor: pointer;
   transition: all 0.2s;
-  background-color: var(--primary-color);
 
   &:hover {
     filter: brightness(110%);
@@ -26,6 +10,26 @@ button {
   &:active {
     transform: translateY(4px);
   }
+}
+
+.app-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 3.25em;
+  border: 0;
+  outline: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: 700;
+  letter-spacing: 0.25px;
+  background-color: var(--primary-color);
+}
+
+a.app-button {
+  text-decoration: none;
 }
 
 #app-switch-theme {

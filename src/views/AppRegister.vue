@@ -29,7 +29,7 @@ function handleSubmit() {}
           <app-input type="text" placeholder="Cidade" required />
           <app-input type="text" placeholder="UF" required />
         </div>
-        <button class="app-submit-button" type="submit">Cadastrar</button>
+        <button class="app-button" type="submit">Cadastrar</button>
       </form>
     </div>
   </div>
@@ -94,6 +94,10 @@ function handleSubmit() {}
         max-width: 80px;
       }
     }
+  }
+
+  .app-button {
+    margin-top: 0.5em;
   }
 
   .app-register-login {
